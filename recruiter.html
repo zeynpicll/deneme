@@ -2,254 +2,261 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>For Recruiters | Zeynep Iclal Akçakoca</title>
 
 <style>
-/* ====== Fonts (lokal .ttf) ====== */
+/* ====== fonts (local, repo kökünde) ====== */
 @font-face{
-  font-family: 'InstrumentSerif';
-  src: url('instrumentserif-regular.ttf') format('truetype');
-  font-display: swap;
+  font-family:"Instrument Serif";
+  src:url("fonts/instrumentserif-regular.ttf") format("truetype");
+  font-weight:400;font-style:normal;font-display:swap;
 }
 @font-face{
-  font-family: 'InstrumentSerifItalic';
-  src: url('instrumentserif-italic.ttf') format('truetype');
-  font-display: swap;
+  font-family:"Instrument Serif";
+  src:url("fonts/instrumentserif-italic.ttf") format("truetype");
+  font-weight:400;font-style:italic;font-display:swap;
 }
 
-/* ====== Reset + Base ====== */
+/* ====== reset + temel ====== */
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   margin:0;
+  font-family:"Instrument Serif", Georgia, serif;
   color:#fff;
-  font-family:'InstrumentSerif', serif;
-  background:url('background.jpg') center/cover fixed no-repeat;
   min-height:100svh;
-  display:flex;
-  flex-direction:column;
+  /* senin görselin */
+  background:url("img/background.jpg") center/cover fixed no-repeat;
+  position:relative;
+  overflow-x:hidden;
 }
 
-/* ====== NAV (diğer sayfalarla birebir) ====== */
+/* üstte çok hafif canlılık için yumuşak ışık animasyonu (senin görselin üstünde) */
+body::before{
+  content:"";
+  position:fixed; inset:-30vmax;
+  background:
+    radial-gradient(60vmax 60vmax at 20% 30%, rgba(255,255,255,.10), transparent 60%),
+    radial-gradient(50vmax 50vmax at 80% 70%, rgba(255,255,255,.08), transparent 60%);
+  filter:blur(20px);
+  animation: floatGlow 16s ease-in-out infinite alternate;
+  pointer-events:none; z-index:0;
+}
+@keyframes floatGlow{
+  from{transform:translate3d(-2%, -2%, 0) scale(1)}
+  to  {transform:translate3d( 2%,  2%, 0) scale(1.02)}
+}
+
+/* ====== nav (diğer sayfalarla aynı yükseklik/mesafe) ====== */
 nav{
-  height:54px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:48px;
-  font-size:18px;
-  letter-spacing:.2px;
-  user-select:none;
+  position:sticky; top:0; z-index:5;
+  display:flex; justify-content:center; gap:3.2rem;
+  padding:14px 16px 18px; /* yükseklik eşitlendi */
+  backdrop-filter:saturate(140%) blur(4px);
+  -webkit-backdrop-filter:saturate(140%) blur(4px);
+  color:#fff;
 }
 nav a{
-  color:#fff; text-decoration:none; opacity:.9;
-  text-shadow:0 1px 8px rgba(0,0,0,.25);
+  color:#fff; text-decoration:none; opacity:.92; letter-spacing:.02em;
+  font-size:18px;
 }
 nav a:hover{opacity:1; text-decoration:underline}
-hr.navline{
-  width:92%; margin:2px auto 24px; border:none; height:1px;
-  background:rgba(255,255,255,.35);
+
+/* ====== ana container ====== */
+.main{
+  position:relative; z-index:1;
+  display:flex; flex-direction:column; align-items:center;
+  gap:22px;
+  padding:40px 20px 80px;
 }
 
-/* ====== HERO ====== */
-.hero{
-  display:flex; flex-direction:column; align-items:center; text-align:center;
-  gap:14px;
+/* ikon */
+.hero-icon{
+  width:120px; height:auto; opacity:.9; filter:drop-shadow(0 8px 22px rgba(0,0,0,.2));
+  margin-top:8px; margin-bottom:6px;
 }
-.hero img{
-  width:132px; height:auto; opacity:.95;
-  filter:drop-shadow(0 8px 22px rgba(0,0,0,.25));
-}
-.lead h1{
-  font-family:'InstrumentSerifItalic', serif;
-  font-size:36px; font-weight:400; margin:4px 0 0;
-  text-shadow:0 10px 25px rgba(0,0,0,.35);
+
+/* başlıklar */
+.lead h2{
+  margin:0; font-size:40px; font-weight:400; text-shadow:0 10px 22px rgba(0,0,0,.25);
 }
 .lead p{
-  margin:4px 0 22px; opacity:.92; font-size:18px;
+  margin:2px 0 18px; font-size:18px; opacity:.95;
 }
-
-/* ====== Bölüm başlığı ====== */
 h3{
-  font-family:'InstrumentSerifItalic', serif;
-  font-size:28px; font-weight:400; margin:4px 0 18px;
-  text-shadow:0 10px 25px rgba(0,0,0,.35);
+  margin:26px 0 10px; font-size:30px; font-style:italic; font-weight:400;
+  text-shadow:0 10px 22px rgba(0,0,0,.25);
 }
 
-/* ====== Rating Satırları ====== */
+/* ====== rating satırı ======
+   3 kolon: sol yazı | 5 nokta | sağ yazı
+*/
 .rate-row{
-  width:min(980px,92vw);
-  margin:0 auto 30px;
+  width:min(980px, 86vw);
+  margin:8px auto 26px;
   display:grid;
-  grid-template-columns:auto 1fr auto;
+  grid-template-columns: 1fr auto 1fr;
   align-items:center;
-  gap:16px;
-  position:relative;
+  column-gap:22px;
 }
-.rate-row .side{
-  font-size:20px;
-  text-shadow:0 10px 25px rgba(0,0,0,.35);
-  white-space:nowrap;
+.side{
+  font-size:18px; text-shadow:0 8px 18px rgba(0,0,0,.25);
+  opacity:.98; white-space:nowrap;
 }
+.side.left{justify-self:end; padding-right:8px}
+.side.right{justify-self:start; padding-left:8px}
+
 .rating{
-  display:flex; justify-content:center; gap:18px;
+  display:flex; align-items:center; justify-content:center;
+  gap:18px;
 }
 
+/* daireler */
 .dot{
-  width:42px; height:42px; border-radius:999px;
+  --size:46px;
+  width:var(--size); height:var(--size); border-radius:50%;
   border:2px solid rgba(255,255,255,.9);
   background:rgba(255,255,255,.06);
-  backdrop-filter:blur(6px);
-  box-shadow:0 10px 25px rgba(0,0,0,.35);
-  display:grid; place-items:center;
-  cursor:pointer; transition:.18s ease;
+  box-shadow:
+     0 8px 22px rgba(0,0,0,.25),
+     inset 0 0 0 0 rgba(255,255,255,.0);
+  transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+  cursor:pointer; position:relative;
 }
-.dot:hover{transform:scale(1.08)}
+.dot::after{ /* glow */
+  content:""; position:absolute; inset:-6px; border-radius:inherit;
+  box-shadow:0 0 18px rgba(255,255,255,.55); opacity:0; transition:opacity .18s;
+}
+.dot:hover{ transform:translateY(-2px); box-shadow:0 10px 28px rgba(0,0,0,.28) }
+.dot:hover::after{ opacity:1 }
 .dot.active{
   background:rgba(255,255,255,.85);
-  border-color:rgba(255,255,255,1);
   box-shadow:
-    0 0 22px rgba(255,255,255,.65),
-    0 10px 25px rgba(0,0,0,.35);
+    0 12px 28px rgba(0,0,0,.30),
+    inset 0 0 0 2px rgba(255,255,255,.9);
+  transform:translateY(-1px) scale(1.02);
 }
 
-/* küçük yardımcı */
-.centered{ display:flex; flex-direction:column; align-items:center; }
-
-/* ====== Footer boşluk ====== */
-footer{height:28svh}
-
-/* ====== MOBILE (≤640px) ====== */
+/* ====== mobil (≤ 640px) ====== */
 @media (max-width:640px){
-  nav{height:50px; gap:22px; font-size:16px}
-  hr.navline{margin:0 auto 16px}
-  .hero img{width:108px}
-  .lead h1{font-size:28px}
-  .lead p{font-size:15px; margin-bottom:16px}
-  h3{font-size:24px; margin-bottom:14px}
+  nav{ gap:18px; padding:12px 10px 16px }
+  nav a{ font-size:16px }
+  .hero-icon{ width:92px; margin-top:4px }
+  .lead h2{ font-size:28px } 
+  .lead p{ font-size:14px }
+  h3{ font-size:22px; margin:18px 0 8px }
 
-  .rate-row{
-    width:92vw; grid-template-columns:1fr; gap:10px; margin-bottom:24px;
-  }
-  .rate-row .rating{justify-content:space-between; gap:12px}
-  .dot{width:38px; height:38px}
-  .rate-row .side{font-size:18px}
-  /* yan yazıları satırın üstüne sabitle */
-  .rate-row .side-left{ justify-self:start; }
-  .rate-row .side-right{ justify-self:end; }
+  .rate-row{ width:92vw; column-gap:14px }
+  .rating{ gap:14px }
+  .dot{ --size:38px }
+
+  .side{ font-size:16px }
+  .side.left{ padding-right:4px }
+  .side.right{ padding-left:4px }
 }
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html">main page</a>
-  <a href="whoami.html">who am i?</a>
-  <a href="whoareyou.html">who are you?</a>
-  <a href="contact.html">contact</a>
-</nav>
-<hr class="navline" />
+  <!-- NAV -->
+  <nav>
+    <a href="index.html">main page</a>
+    <a href="whoami.html">who am i?</a>
+    <a href="whoareyou.html">who are you?</a>
+    <a href="contact.html">contact</a>
+  </nav>
 
-<main class="centered">
-  <section class="hero">
-    <!-- İKON: kökte recruiter.png -->
-    <img src="recruiter.png" alt="recruiter icon" />
-    <div class="lead">
-      <h1>i’m glad you’re here!</h1>
+  <main class="main">
+    <img class="hero-icon" src="img/recruiter.png" alt="recruiter icon" />
+
+    <div class="lead" style="text-align:center">
+      <h2>i’m glad you’re here!</h2>
       <p>would you like to rate?</p>
     </div>
-  </section>
-
-  <section style="margin-top:6px;">
-    <h3 class="centered">aesthetic</h3>
 
     <!-- AESTHETIC -->
+    <h3>aesthetic</h3>
     <div class="rate-row" data-group="aesthetic">
-      <div class="side side-left">not my style</div>
-      <div class="rating">
-        <button class="dot" data-val="1" aria-label="1"></button>
-        <button class="dot" data-val="2" aria-label="2"></button>
-        <button class="dot" data-val="3" aria-label="3"></button>
-        <button class="dot" data-val="4" aria-label="4"></button>
-        <button class="dot" data-val="5" aria-label="5"></button>
-      </div>
-      <div class="side side-right">loved it!</div>
-    </div>
+      <div class="side left">not my style</div>
 
-    <h3 class="centered" style="margin-top:12px;">me : )</h3>
+      <div class="rating">
+        <button class="dot" data-value="1" aria-label="1"></button>
+        <button class="dot" data-value="2" aria-label="2"></button>
+        <button class="dot" data-value="3" aria-label="3"></button>
+        <button class="dot" data-value="4" aria-label="4"></button>
+        <button class="dot" data-value="5" aria-label="5"></button>
+      </div>
+
+      <div class="side right">loved it!</div>
+    </div>
 
     <!-- ME -->
+    <h3>me :)</h3>
     <div class="rate-row" data-group="me">
-      <div class="side side-left">maybe in another opportunities</div>
-      <div class="rating">
-        <button class="dot" data-val="1" aria-label="1"></button>
-        <button class="dot" data-val="2" aria-label="2"></button>
-        <button class="dot" data-val="3" aria-label="3"></button>
-        <button class="dot" data-val="4" aria-label="4"></button>
-        <button class="dot" data-val="5" aria-label="5"></button>
-      </div>
-      <div class="side side-right">want to meet you!</div>
-    </div>
-  </section>
-</main>
+      <div class="side left">maybe in another opportunities</div>
 
-<footer></footer>
+      <div class="rating">
+        <button class="dot" data-value="1" aria-label="1"></button>
+        <button class="dot" data-value="2" aria-label="2"></button>
+        <button class="dot" data-value="3" aria-label="3"></button>
+        <button class="dot" data-value="4" aria-label="4"></button>
+        <button class="dot" data-value="5" aria-label="5"></button>
+      </div>
+
+      <div class="side right">want to meet you!</div>
+    </div>
+  </main>
 
 <script>
-/* ============ RATING + KAYIT ============ */
-const ENDPOINT = "https://script.google.com/macros/s/AKfycbxnrfVE0o8uFKbi_nxoiRpiJ_wgpT2ftHQxxozlB1uOdTPIuiNcfH8eEZr8Eawr-DKg_Q/exec"; // senin Apps Script linkin
+/* ====== submit + UI ====== */
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxnrfVE0o8uFKbi_nxoiRpiJ_wgpT2ftHQxxozlB1uOdTPIuiNcfH8eEZr8Eawr-DKg_Q/exec";
 
-function setActive(btn){
-  const row = btn.closest('.rate-row');
-  row.querySelectorAll('.dot').forEach(d=>d.classList.remove('active'));
-  btn.classList.add('active');
-}
+/* seçimi tutalım */
+const state = { aesthetic:null, me:null };
 
-function currentScores(){
-  const a = document.querySelector('.rate-row[data-group="aesthetic"] .dot.active')?.dataset.val || "";
-  const m = document.querySelector('.rate-row[data-group="me"] .dot.active')?.dataset.val || "";
-  return { aesthetic: a, me: m };
-}
-
-async function sendScores(){
-  const { aesthetic, me } = currentScores();
-  if(!aesthetic && !me) return; // hiç seçim yoksa gönderme
-  try{
-    await fetch(ENDPOINT, {
-      method:"POST",
-      headers:{ "Content-Type":"application/json" },
-      body: JSON.stringify({
-        page: "recruiter",
-        aesthetic, me,
-        ua: navigator.userAgent,
-        ts: new Date().toISOString()
-      })
-    });
-  }catch(e){ /* sessiz geç */ }
-}
-
-document.querySelectorAll('.dot').forEach(btn=>{
-  btn.addEventListener('click', async (e)=>{
-    setActive(btn);
-    await sendScores();
-
-    const group = btn.closest('.rate-row').dataset.group;
-    const val = Number(btn.dataset.val);
-
-    // "me" grubunda 5 seçilirse contact'a git
-    if(group === "me" && val === 5){
-      setTimeout(()=>{ location.href = "contact.html"; }, 220);
-    }
+function markActive(groupEl, value){
+  groupEl.querySelectorAll('.dot').forEach(d=>{
+    d.classList.toggle('active', Number(d.dataset.value) === value);
   });
-});
+}
 
-/* İlk yüklemede görsel yolları doğru mu kontrol (debug amaçlı hafif log) */
-window.addEventListener('load', ()=>{
-  const img = document.querySelector('.hero img');
-  img.addEventListener('error', ()=> console.warn('recruiter.png bulunamadı. Kök dizine koymalısın.'));
+async function sendRating(){
+  try{
+    const payload = {
+      page: 'recruiter',
+      timestamp: new Date().toISOString(),
+      aesthetic: state.aesthetic ?? '',
+      me: state.me ?? ''
+    };
+    await fetch(SCRIPT_URL, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(payload)
+    });
+  }catch(err){
+    // sessiz geç – kullanıcıyı bozmayalım
+    console.error('rating send error:', err);
+  }
+}
+
+document.querySelectorAll('.rate-row').forEach(row=>{
+  row.addEventListener('click', e=>{
+    const btn = e.target.closest('.dot');
+    if(!btn) return;
+
+    const group = row.dataset.group;            // "aesthetic" | "me"
+    const value = Number(btn.dataset.value);    // 1..5
+    state[group] = value;
+    markActive(row, value);
+    sendRating();
+
+    // "me" 5 ise otomatik contact
+    if(group === 'me' && value === 5){
+      setTimeout(()=>location.href='contact.html', 800);
+    }
+  }, {passive:true});
 });
 </script>
-
 </body>
 </html>
