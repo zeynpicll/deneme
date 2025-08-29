@@ -1,235 +1,255 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>For Recruiters | Zeynep Iclal Akçakoca</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>For Recruiters | Zeynep Iclal Akçakoca</title>
 
-  <!-- genel stillerin -->
-  <link rel="stylesheet" href="css/style.css" />
+<style>
+/* ====== Fonts (lokal .ttf) ====== */
+@font-face{
+  font-family: 'InstrumentSerif';
+  src: url('instrumentserif-regular.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face{
+  font-family: 'InstrumentSerifItalic';
+  src: url('instrumentserif-italic.ttf') format('truetype');
+  font-display: swap;
+}
 
-  <style>
-    /* ============ sayfaya özel küçük eklemeler ============ */
+/* ====== Reset + Base ====== */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:#fff;
+  font-family:'InstrumentSerif', serif;
+  background:url('background.jpg') center/cover fixed no-repeat;
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+}
 
-    /* nav yükseklik/ölçüleri diğer sayfalarla aynı kalsın */
-    nav, .site-nav { padding: 14px 0; font-size: 16px; }
+/* ====== NAV (diğer sayfalarla birebir) ====== */
+nav{
+  height:54px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:48px;
+  font-size:18px;
+  letter-spacing:.2px;
+  user-select:none;
+}
+nav a{
+  color:#fff; text-decoration:none; opacity:.9;
+  text-shadow:0 1px 8px rgba(0,0,0,.25);
+}
+nav a:hover{opacity:1; text-decoration:underline}
+hr.navline{
+  width:92%; margin:2px auto 24px; border:none; height:1px;
+  background:rgba(255,255,255,.35);
+}
 
-    /* ana düzen */
-    main {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 48px 20px 80px;
-      text-align: center;
-    }
+/* ====== HERO ====== */
+.hero{
+  display:flex; flex-direction:column; align-items:center; text-align:center;
+  gap:14px;
+}
+.hero img{
+  width:132px; height:auto; opacity:.95;
+  filter:drop-shadow(0 8px 22px rgba(0,0,0,.25));
+}
+.lead h1{
+  font-family:'InstrumentSerifItalic', serif;
+  font-size:36px; font-weight:400; margin:4px 0 0;
+  text-shadow:0 10px 25px rgba(0,0,0,.35);
+}
+.lead p{
+  margin:4px 0 22px; opacity:.92; font-size:18px;
+}
 
-    /* üst ikon */
-    .hero-icon {
-      width: 180px;
-      height: auto;
-      margin: 0 auto 22px;
-      display: block;
-      filter: drop-shadow(0 20px 40px rgba(0,0,0,.25));
-      opacity: .95;
-      user-select: none;
-      pointer-events: none;
-    }
+/* ====== Bölüm başlığı ====== */
+h3{
+  font-family:'InstrumentSerifItalic', serif;
+  font-size:28px; font-weight:400; margin:4px 0 18px;
+  text-shadow:0 10px 25px rgba(0,0,0,.35);
+}
 
-    .lead h2{
-      font-weight: 400;
-      margin: 8px 0 6px;
-    }
-    .lead p{
-      font-size: 18px;
-      opacity: .95;
-      margin: 0 0 22px;
-    }
+/* ====== Rating Satırları ====== */
+.rate-row{
+  width:min(980px,92vw);
+  margin:0 auto 30px;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:16px;
+  position:relative;
+}
+.rate-row .side{
+  font-size:20px;
+  text-shadow:0 10px 25px rgba(0,0,0,.35);
+  white-space:nowrap;
+}
+.rating{
+  display:flex; justify-content:center; gap:18px;
+}
 
-    /* başlıklar (aesthetic / me : ) ) */
-    h3{
-      font-weight: 400;
-      font-size: 30px;
-      margin: 22px 0 14px;
-      text-shadow: 0 10px 20px rgba(0,0,0,.28);
-    }
+.dot{
+  width:42px; height:42px; border-radius:999px;
+  border:2px solid rgba(255,255,255,.9);
+  background:rgba(255,255,255,.06);
+  backdrop-filter:blur(6px);
+  box-shadow:0 10px 25px rgba(0,0,0,.35);
+  display:grid; place-items:center;
+  cursor:pointer; transition:.18s ease;
+}
+.dot:hover{transform:scale(1.08)}
+.dot.active{
+  background:rgba(255,255,255,.85);
+  border-color:rgba(255,255,255,1);
+  box-shadow:
+    0 0 22px rgba(255,255,255,.65),
+    0 10px 25px rgba(0,0,0,.35);
+}
 
-    /* satır düzeni: solda yazı – ortada daireler – sağda yazı */
-    .rate-row{
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      gap: 18px;
-      width: min(760px, 92vw);
-      margin: 10px auto 36px;
-      position: relative;
-    }
+/* küçük yardımcı */
+.centered{ display:flex; flex-direction:column; align-items:center; }
 
-    /* ortadaki dairelerin şeridi */
-    .rating{
-      display: flex;
-      justify-content: space-between; /* daireler sabit aralıklı */
-      gap: 16px;
-    }
+/* ====== Footer boşluk ====== */
+footer{height:28svh}
 
-    /* yan yazılar; dairelerin ilk/sonuna hizalı */
-    .rate-row .side{
-      font-size: 18px;
-      opacity: .95;
-      text-shadow: 0 10px 20px rgba(0,0,0,.25);
-      white-space: nowrap;
-    }
+/* ====== MOBILE (≤640px) ====== */
+@media (max-width:640px){
+  nav{height:50px; gap:22px; font-size:16px}
+  hr.navline{margin:0 auto 16px}
+  .hero img{width:108px}
+  .lead h1{font-size:28px}
+  .lead p{font-size:15px; margin-bottom:16px}
+  h3{font-size:24px; margin-bottom:14px}
 
-    /* daire */
-    .dot{
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      border: 2px solid rgba(255,255,255,.9);
-      background: rgba(255,255,255,.06);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      box-shadow:
-        0 10px 25px rgba(0,0,0,.28),
-        inset 0 0 0 0 rgba(255,255,255,.0);
-      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
-      cursor: pointer;
-      display: inline-block;
-    }
-    .dot:hover{
-      transform: scale(1.08);
-      box-shadow:
-        0 18px 40px rgba(0,0,0,.35),
-        0 0 28px rgba(255,255,255,.6);
-      background: rgba(255,255,255,.12);
-    }
-    .dot.active{
-      background: radial-gradient( circle at 50% 45%,
-        rgba(255,255,255,.9) 0%,
-        rgba(255,255,255,.75) 55%,
-        rgba(255,255,255,.30) 100%);
-      box-shadow:
-        0 25px 60px rgba(0,0,0,.45),
-        0 0 40px rgba(255,255,255,.85),
-        inset 0 0 20px rgba(255,255,255,.8);
-      transform: scale(1.12);
-    }
-
-    /* küçük ekran düzeni */
-    @media (max-width: 640px){
-      .hero-icon{ width: 140px; margin-bottom: 14px; }
-      .lead h2{ font-size: 24px; }
-      .lead p{ font-size: 14px; }
-      h3{ font-size: 22px; margin: 12px 0 10px; }
-      .rate-row{
-        width: 92vw;
-        grid-template-columns: auto 1fr auto; /* hizalar bozulmasın */
-        gap: 14px;
-        margin: 8px auto 28px;
-      }
-      .rate-row .side{ font-size: 16px; }
-      .dot{ width: 42px; height: 42px; }
-    }
-  </style>
+  .rate-row{
+    width:92vw; grid-template-columns:1fr; gap:10px; margin-bottom:24px;
+  }
+  .rate-row .rating{justify-content:space-between; gap:12px}
+  .dot{width:38px; height:38px}
+  .rate-row .side{font-size:18px}
+  /* yan yazıları satırın üstüne sabitle */
+  .rate-row .side-left{ justify-self:start; }
+  .rate-row .side-right{ justify-self:end; }
+}
+</style>
 </head>
-
 <body>
-  <!-- üst menü (diğer sayfalardakiyle aynı) -->
-  <nav class="site-nav">
-    <a href="index.html">main page</a>
-    <a href="whoami.html">who am i?</a>
-    <a href="whoareyou.html">who are you?</a>
-    <a href="contact.html">contact</a>
-  </nav>
 
-  <main>
-    <img src="img/recruiter.png" alt="" class="hero-icon" />
+<nav>
+  <a href="index.html">main page</a>
+  <a href="whoami.html">who am i?</a>
+  <a href="whoareyou.html">who are you?</a>
+  <a href="contact.html">contact</a>
+</nav>
+<hr class="navline" />
 
-    <section class="lead">
-      <h2>i’m glad you’re here!</h2>
+<main class="centered">
+  <section class="hero">
+    <!-- İKON: kökte recruiter.png -->
+    <img src="recruiter.png" alt="recruiter icon" />
+    <div class="lead">
+      <h1>i’m glad you’re here!</h1>
       <p>would you like to rate?</p>
-    </section>
+    </div>
+  </section>
+
+  <section style="margin-top:6px;">
+    <h3 class="centered">aesthetic</h3>
 
     <!-- AESTHETIC -->
-    <h3>aesthetic</h3>
-    <div class="rate-row" id="row-aesthetic">
-      <div class="side left">not my style</div>
-
-      <div class="rating" data-field="aesthetic">
-        <button class="dot" data-value="1" aria-label="1"></button>
-        <button class="dot" data-value="2" aria-label="2"></button>
-        <button class="dot" data-value="3" aria-label="3"></button>
-        <button class="dot" data-value="4" aria-label="4"></button>
-        <button class="dot" data-value="5" aria-label="5"></button>
+    <div class="rate-row" data-group="aesthetic">
+      <div class="side side-left">not my style</div>
+      <div class="rating">
+        <button class="dot" data-val="1" aria-label="1"></button>
+        <button class="dot" data-val="2" aria-label="2"></button>
+        <button class="dot" data-val="3" aria-label="3"></button>
+        <button class="dot" data-val="4" aria-label="4"></button>
+        <button class="dot" data-val="5" aria-label="5"></button>
       </div>
-
-      <div class="side right">loved it!</div>
+      <div class="side side-right">loved it!</div>
     </div>
+
+    <h3 class="centered" style="margin-top:12px;">me : )</h3>
 
     <!-- ME -->
-    <h3>me : )</h3>
-    <div class="rate-row" id="row-me">
-      <div class="side left">maybe in another opportunities</div>
-
-      <div class="rating" data-field="me">
-        <button class="dot" data-value="1" aria-label="1"></button>
-        <button class="dot" data-value="2" aria-label="2"></button>
-        <button class="dot" data-value="3" aria-label="3"></button>
-        <button class="dot" data-value="4" aria-label="4"></button>
-        <button class="dot" data-value="5" aria-label="5"></button>
+    <div class="rate-row" data-group="me">
+      <div class="side side-left">maybe in another opportunities</div>
+      <div class="rating">
+        <button class="dot" data-val="1" aria-label="1"></button>
+        <button class="dot" data-val="2" aria-label="2"></button>
+        <button class="dot" data-val="3" aria-label="3"></button>
+        <button class="dot" data-val="4" aria-label="4"></button>
+        <button class="dot" data-val="5" aria-label="5"></button>
       </div>
-
-      <div class="side right">want to meet you!</div>
+      <div class="side side-right">want to meet you!</div>
     </div>
-  </main>
+  </section>
+</main>
 
-  <script>
-    /* ====== basit puanlama + kayıt ====== */
+<footer></footer>
 
-    const ENDPOINT =
-      "https://script.google.com/macros/s/AKfycbxnrfVE0o8uFKbi_nxoiRpiJ_wgpT2ftHQxxozlB1uOdTPIuiNcfH8eEZr8Eawr-DKg_Q/exec";
+<script>
+/* ============ RATING + KAYIT ============ */
+const ENDPOINT = "https://script.google.com/macros/s/AKfycbxnrfVE0o8uFKbi_nxoiRpiJ_wgpT2ftHQxxozlB1uOdTPIuiNcfH8eEZr8Eawr-DKg_Q/exec"; // senin Apps Script linkin
 
-    // aktif seçimi UI'da göster
-    function setActive(container, val){
-      container.querySelectorAll('.dot').forEach(btn=>{
-        btn.classList.toggle('active', Number(btn.dataset.value) <= val);
-      });
-    }
+function setActive(btn){
+  const row = btn.closest('.rate-row');
+  row.querySelectorAll('.dot').forEach(d=>d.classList.remove('active'));
+  btn.classList.add('active');
+}
 
-    // her satır için click handler
-    document.querySelectorAll('.rating').forEach(group=>{
-      group.addEventListener('click', async (e)=>{
-        const dot = e.target.closest('.dot');
-        if(!dot) return;
+function currentScores(){
+  const a = document.querySelector('.rate-row[data-group="aesthetic"] .dot.active')?.dataset.val || "";
+  const m = document.querySelector('.rate-row[data-group="me"] .dot.active')?.dataset.val || "";
+  return { aesthetic: a, me: m };
+}
 
-        const value = Number(dot.dataset.value);
-        const field = group.dataset.field;
-
-        // UI
-        setActive(group, value);
-
-        // arkaplana kaydet
-        const payload = {
-          when: new Date().toISOString(),
-          page: 'recruiter',
-          [field]: value
-        };
-
-        try{
-          await fetch(ENDPOINT, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          });
-        }catch(err){
-          console.warn('send fail (ignored for user):', err);
-        }
-
-        // "me" 5 ise otomatik contact
-        if(field === 'me' && value === 5){
-          setTimeout(()=>location.href='contact.html', 350);
-        }
-      }, { passive:true });
+async function sendScores(){
+  const { aesthetic, me } = currentScores();
+  if(!aesthetic && !me) return; // hiç seçim yoksa gönderme
+  try{
+    await fetch(ENDPOINT, {
+      method:"POST",
+      headers:{ "Content-Type":"application/json" },
+      body: JSON.stringify({
+        page: "recruiter",
+        aesthetic, me,
+        ua: navigator.userAgent,
+        ts: new Date().toISOString()
+      })
     });
-  </script>
+  }catch(e){ /* sessiz geç */ }
+}
+
+document.querySelectorAll('.dot').forEach(btn=>{
+  btn.addEventListener('click', async (e)=>{
+    setActive(btn);
+    await sendScores();
+
+    const group = btn.closest('.rate-row').dataset.group;
+    const val = Number(btn.dataset.val);
+
+    // "me" grubunda 5 seçilirse contact'a git
+    if(group === "me" && val === 5){
+      setTimeout(()=>{ location.href = "contact.html"; }, 220);
+    }
+  });
+});
+
+/* İlk yüklemede görsel yolları doğru mu kontrol (debug amaçlı hafif log) */
+window.addEventListener('load', ()=>{
+  const img = document.querySelector('.hero img');
+  img.addEventListener('error', ()=> console.warn('recruiter.png bulunamadı. Kök dizine koymalısın.'));
+});
+</script>
+
 </body>
 </html>
