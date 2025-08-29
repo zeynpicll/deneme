@@ -2,181 +2,236 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>For Recruiters | Zeynep Iclal Akçakoca</title>
 
-<!-- Instrument Serif (Google Fonts) -->
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-
 <style>
-:root{
-  --txt:#fff;
-  --border:#ffffff80;
+/* ===== fonts (offline) ===== */
+@font-face{
+  font-family: "Instrument Serif";
+  src: url("./fonts/instrumentserif-regular.ttf") format("truetype");
+  font-weight: 400; font-style: normal; font-display: swap;
 }
+@font-face{
+  font-family: "Instrument Serif";
+  src: url("./fonts/instrumentserif-italic.ttf") format("truetype");
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+
+/* ===== base ===== */
 *{box-sizing:border-box}
-html,body{height:100%}
+html{scroll-behavior:smooth}
 body{
-  margin:0; color:var(--txt);
-  font-family:'Instrument Serif', Georgia, serif;
-  background:url("background.jpg") center/cover fixed no-repeat;
+  margin:0;
+  font-family: "Instrument Serif", Georgia, serif;
+  color:#fff;
+  min-height:100svh;
+  position:relative;
   overflow-x:hidden;
 }
 
-/* 🔮 Serbest akan renk bulutları (görselden bağımsız) */
-.flow {
-  position: fixed;
-  inset: -20%;               /* kenar dışına taşı, blur kesilmesin */
-  pointer-events: none;
-  z-index: 0;
-  background:
-    radial-gradient(closest-side at 20% 30%, rgba(255,120,180,.32), transparent 60%),
-    radial-gradient(closest-side at 80% 40%, rgba(120,180,255,.30), transparent 60%),
-    radial-gradient(closest-side at 45% 80%, rgba(180,255,200,.28), transparent 60%),
-    radial-gradient(closest-side at 60% 20%, rgba(255,220,160,.24), transparent 60%);
-  filter: blur(70px) saturate(115%);
-  mix-blend-mode: screen;    /* resmin üstünde ışık gibi davranır */
-  animation: drift 28s ease-in-out infinite alternate;
+/* background: your image + soft motion */
+.bg{
+  position:fixed; inset:0; z-index:-2;
+  background:url("./img/background.jpg") center/cover no-repeat;
+  transform:scale(1.06);
+  animation: kb 28s ease-in-out infinite alternate;
+  filter:saturate(105%);
 }
-@keyframes drift{
-  0%   { transform: translate(-6%, -4%) scale(1.00) rotate(0deg);   }
-  50%  { transform: translate( 5%,  6%) scale(1.12) rotate(8deg);   }
-  100% { transform: translate(-4%,  5%) scale(1.05) rotate(-6deg);  }
+@keyframes kb{
+  0%  {transform:scale(1.06) translate3d(0,0,0);}
+  100%{transform:scale(1.12) translate3d(1.5%, -1.2%, 0);}
+}
+/* light mist to help okunabilirlik */
+.bg-mist{
+  position:fixed; inset:0; z-index:-1;
+  background: radial-gradient(1200px 600px at 70% 30%, rgba(255,255,255,.08), transparent 60%),
+              radial-gradient(1000px 600px at 20% 70%, rgba(255,255,255,.06), transparent 60%);
+  mix-blend-mode:screen;
 }
 
+/* ===== nav (other pages ile birebir) ===== */
 nav{
-  display:flex;
-  justify-content:center;
-  gap:3rem;               /* linkler arası eşit boşluk */
-  padding:1rem;           /* üst-alt aynı yükseklik */
-  font-size:1rem;         /* yazı boyutu diğerleriyle aynı */
-  position:sticky;
-  top:0; 
-  z-index:5;
+  display:flex; justify-content:center; gap:3rem;
+  padding:1rem; font-size:1rem;
+  position:sticky; top:0; z-index:5;
   backdrop-filter:saturate(120%) blur(4px);
 }
-nav a{
-  color:#fff;
-  text-decoration:none;
-  opacity:.9;
-}
-nav a:hover{
-  opacity:1;
-  text-decoration:underline;
-}
+nav a{color:#fff; text-decoration:none; opacity:.9}
+nav a:hover{opacity:1; text-decoration:underline}
 
-/* content */
-.wrapper{
-  position:relative; z-index:1;        /* flow’un üstünde */
-  max-width:980px; margin:48px auto 84px; padding:0 20px;
-  display:flex; flex-direction:column; align-items:center; gap:20px; text-align:center;
+/* ===== layout ===== */
+.container{
+  max-width:1100px; margin:0 auto; padding:48px 20px 80px;
+  display:flex; flex-direction:column; align-items:center; text-align:center;
 }
 .hero-icon{
-  width:min(200px,38vw); height:auto;
-  filter:drop-shadow(0 8px 24px rgba(0,0,0,.18)) drop-shadow(0 0 20px rgba(255,255,255,.35));
+  width:150px; height:auto; opacity:.95; filter:drop-shadow(0 10px 25px rgba(0,0,0,.18));
 }
-.lead h2{margin:10px 0 6px;font-weight:400;font-size:clamp(26px,3.2vw,34px);text-shadow:0 0 18px #fff}
-.lead p{margin:0;opacity:.95;font-size:clamp(14px,1.6vw,16px)}
-h3{font-weight:400;font-style:italic;margin:22px 0 12px;font-size:clamp(22px,2.6vw,28px);text-shadow:0 0 16px #fff}
+.lead h1{
+  font-size:34px; font-weight:400; margin:18px 0 8px; letter-spacing:.2px;
+  text-shadow:0 10px 25px rgba(0,0,0,.25);
+}
+.lead p{
+  font-size:18px; margin:0 0 22px; opacity:.95;
+}
+h3{
+  font-style:italic; font-weight:400; font-size:26px;
+  margin:22px 0 6px; text-shadow:0 10px 25px rgba(0,0,0,.18);
+}
 
-/* rating rows */
+/* ===== rating rows ===== */
 .rate-row{
-  width:100%;
-  display:grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items:center; gap:16px;
-  margin:10px 0 30px;
+  width:min(760px, 92vw);
+  margin:12px auto 38px;
+  position:relative;
 }
-.side{font-size:clamp(16px,2vw,20px);white-space:nowrap;text-shadow:0 0 12px rgba(255,255,255,.75)}
-.side.right{justify-self:end}
-.rating{display:flex;align-items:center;justify-content:center;gap:20px}
-.dot{
-  width:40px;height:40px;border-radius:50%;
-  border:1.5px solid var(--border);
-  background:rgba(255,255,255,.22);
-  box-shadow:0 0 10px rgba(255,255,255,.35),0 10px 18px rgba(0,0,0,.12);
-  cursor:pointer;transition:transform .18s,box-shadow .18s,background .18s,border-color .18s;
+.rate-row .side{
+  position:absolute; top:28px; font-size:18px; opacity:.95;
+  text-shadow:0 10px 20px rgba(0,0,0,.25);
 }
-.dot:hover{background:#fff;transform:scale(1.18);box-shadow:0 0 22px #fff,0 0 36px #fff}
-.dot.active{background:#fff;transform:scale(1.12);box-shadow:0 0 18px #fff,0 0 30px #fff;border-color:#fff}
+.rate-row .side:first-child{ left:-110px; }         /* soldaki yazı (yaklaştırıldı) */
+.rate-row .side:last-child{  right:-110px; }        /* sağdaki yazı (yaklaştırıldı) */
 
-/* mobile */
-@media(max-width:640px){
-  .wrapper{margin-top:28px}
+.rating{
+  display:flex; justify-content:center; gap:18px;
+}
+.dot{
+  width:26px; height:26px; border-radius:50%;
+  border:2px solid rgba(255,255,255,.9);
+  background:rgba(255,255,255,.06);
+  box-shadow:0 10px 25px rgba(0,0,0,.28), inset 0 0 0 1px rgba(255,255,255,.25);
+  cursor:pointer; transition:.18s ease;
+}
+.dot:hover,
+.dot.active{
+  transform:scale(1.18);
+  background:rgba(255,255,255,.85);
+  box-shadow:0 10px 28px rgba(0,0,0,.32), 0 0 18px rgba(255,255,255,.65);
+}
+
+/* ===== mobile ===== */
+@media (max-width: 900px){
   .hero-icon{width:140px}
-  .rate-row{width:92vw;grid-template-columns:1fr;position:relative;margin:12px auto 28px}
-  .rating{gap:16px}
-  .side{position:absolute;top:-22px;font-size:16px}
-  .side.left{left:0}.side.right{right:0}
-  .dot{width:34px;height:34px}
+  .lead h1{font-size:30px}
+  .lead p{font-size:16px}
+  h3{font-size:22px}
+  .rate-row{width:92vw; margin:10px auto 30px}
+  .rating{gap:14px}
+  .dot{width:24px; height:24px}
+  .rate-row .side{top:24px; font-size:16px}
+  .rate-row .side:first-child{ left:-86px; }        /* mobile’de daha yakın */
+  .rate-row .side:last-child{  right:-86px; }
+}
+@media (max-width: 520px){
+  .lead h1{font-size:28px}
+  h3{font-size:20px}
+}
+
+footer{
+  margin-top:46px; opacity:.85; font-size:14px;
+}
+
+/* small glow on click */
+.click-flash{ animation:flash .4s ease; }
+@keyframes flash{
+  0%{ box-shadow:0 0 0 rgba(255,255,255,0); }
+  50%{ box-shadow:0 0 22px rgba(255,255,255,.9); }
+  100%{ box-shadow:0 0 0 rgba(255,255,255,0); }
 }
 </style>
 </head>
 <body>
+  <div class="bg"></div>
+  <div class="bg-mist"></div>
 
-<!-- 🔮 hareketli renk bulutları -->
-<div class="flow" aria-hidden="true"></div>
+  <nav>
+    <a href="./index.html">main page</a>
+    <a href="./whoami.html">who am i?</a>
+    <a href="./whoareyou.html">who are you?</a>
+    <a href="./contact.html">contact</a>
+  </nav>
 
-<nav>
-  <a href="index.html">main page</a>
-  <a href="whoami.html">who am i?</a>
-  <a href="whoareyou.html">who are you?</a>
-  <a href="contact.html">contact</a>
-</nav>
+  <main class="container">
+    <img src="./img/recruiter.png" alt="recruiter icon" class="hero-icon" />
 
-<main class="wrapper">
-  <img class="hero-icon" src="recruiter.png" alt="recruiter icon"/>
-
-  <div class="lead">
-    <h2>i’m glad you’re here!</h2>
-    <p>would you like to rate?</p>
-  </div>
-
-  <h3>aesthetic</h3>
-  <section class="rate-row">
-    <div class="side left">not my style</div>
-    <div class="rating" data-group="aesthetic">
-      <span class="dot" data-value="1"></span>
-      <span class="dot" data-value="2"></span>
-      <span class="dot" data-value="3"></span>
-      <span class="dot" data-value="4"></span>
-      <span class="dot" data-value="5"></span>
+    <div class="lead">
+      <h1>i’m glad you’re here!</h1>
+      <p>would you like to rate?</p>
     </div>
-    <div class="side right">loved it!</div>
-  </section>
 
-  <h3>me :)</h3>
-  <section class="rate-row">
-    <div class="side left">maybe in another opportunities</div>
-    <div class="rating" data-group="me">
-      <span class="dot" data-value="1"></span>
-      <span class="dot" data-value="2"></span>
-      <span class="dot" data-value="3"></span>
-      <span class="dot" data-value="4"></span>
-      <span class="dot" data-value="5"></span>
+    <h3>aesthetic</h3>
+    <div class="rate-row" id="row-aesthetic">
+      <span class="side">not my style</span>
+      <div class="rating">
+        <button class="dot" data-value="1"></button>
+        <button class="dot" data-value="2"></button>
+        <button class="dot" data-value="3"></button>
+        <button class="dot" data-value="4"></button>
+        <button class="dot" data-value="5"></button>
+      </div>
+      <span class="side">loved it!</span>
     </div>
-    <div class="side right">want to meet you!</div>
-  </section>
-</main>
+
+    <h3>me : )</h3>
+    <div class="rate-row" id="row-me">
+      <span class="side">maybe in another opportunities</span>
+      <div class="rating">
+        <button class="dot" data-value="1"></button>
+        <button class="dot" data-value="2"></button>
+        <button class="dot" data-value="3"></button>
+        <button class="dot" data-value="4"></button>
+        <button class="dot" data-value="5"></button>
+      </div>
+      <span class="side">want to meet you!</span>
+    </div>
+
+    <footer>© 2025 Zeynep Iclal Akçakoca</footer>
+  </main>
 
 <script>
-/* Sheets endpoint’in */
-const SCRIPT_URL="https://script.google.com/macros/s/AKfycbxnrfVE0o8uFKbi_nxoiRpiJ_wgpT2ftHQxxozlB1uOdTPIuiNcfH8eEZr8Eawr-DKg_Q/exec";
-function paintActive(c,v){c.querySelectorAll('.dot').forEach(b=>b.classList.toggle('active',+b.dataset.value<=v));}
-function sendVote(g,v){
-  fetch(SCRIPT_URL,{
-    method:"POST",mode:"no-cors",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({page:"recruiter",group:g,value:v,ts:new Date().toISOString(),ua:navigator.userAgent})
-  }).catch(()=>{});
+/* ===== config ===== */
+const ENDPOINT = "https://script.google.com/macros/s/AKfycbxnrfVE0o8uFKbi_nxoiRpiJ_wgpT2ftHQxxozlB1uOdTPIuiNcfH8eEZr8Eawr-DKg_Q/exec";
+
+/* helper: submit to Apps Script */
+async function sendRating(payload){
+  try{
+    await fetch(ENDPOINT, {
+      method:"POST",
+      headers:{ "Content-Type":"application/json" },
+      body: JSON.stringify(payload)
+    });
+  }catch(e){ /* sessiz hata — kullanıcıyı yorma */ }
 }
-document.querySelectorAll(".rating").forEach(block=>{
-  block.addEventListener("click",e=>{
-    const btn=e.target.closest(".dot"); if(!btn) return;
-    const v=+btn.dataset.value; paintActive(block,v);
-    const g=block.dataset.group; sendVote(g,v);
-    if(g==="me"&&v===5){ setTimeout(()=>location.href="contact.html",320); }
+
+/* dots logic */
+function wireRow(rowEl, label){
+  const dots = [...rowEl.querySelectorAll('.dot')];
+  dots.forEach(dot=>{
+    dot.addEventListener('click', async ()=>{
+      const val = Number(dot.dataset.value);
+      dots.forEach(d=>d.classList.toggle('active', Number(d.dataset.value) <= val));
+      dot.classList.add('click-flash');
+
+      // gönder
+      await sendRating({
+        page: "recruiter",
+        field: label,
+        value: val,
+        ts: new Date().toISOString(),
+        ua: navigator.userAgent
+      });
+
+      // "me" satırında 5 seçilirse contact'a geç
+      if(label === "me" && val === 5){
+        window.location.href = "./contact.html";
+      }
+    });
   });
-});
+}
+
+wireRow(document.getElementById('row-aesthetic'), "aesthetic");
+wireRow(document.getElementById('row-me'), "me");
 </script>
 </body>
 </html>
