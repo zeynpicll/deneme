@@ -1,79 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>For Recruiters | Zeynep Iclal Akçakoca</title>
-  <link rel="stylesheet" href="style.css">
+
+  <!-- Genel stilin (arka plan, font vb.) aynı kalması için -->
+  <link rel="stylesheet" href="style.css" />
+
   <style>
-    main {
+    /* Sayfanın merkezlenmesi */
+    main{
+      min-height: calc(100vh - 70px);
       display:flex;
       flex-direction:column;
       align-items:center;
       justify-content:center;
-      min-height:100vh;
-      text-align:center;
+      gap:14px;
       color:#fff;
+      text-align:center;
+      padding: 32px 16px 56px;
     }
 
-    .icon {
-      font-size:90px;
-      margin-bottom:20px;
+    /* Üstteki recruiter ikon PNG */
+    .hero-icon{
+      width:min(200px, 35vw);
+      height:auto;
+      display:block;
+      margin:0 auto 8px;
+      filter: drop-shadow(0 10px 30px rgba(255,255,255,.25));
+      user-select:none;
+      pointer-events:none;
     }
 
-    h2 {
-      font-size:1.8rem;
-      margin:10px 0 6px;
+    .lead{ margin-top:4px; opacity:.95; }
+    .lead h2{ font-weight:400; margin:6px 0 4px; font-size:clamp(22px,2.2vw,28px); }
+    .lead p{ margin:0; font-size:clamp(14px,1.4vw,16px); }
+
+    /* Bölüm başlığı */
+    h3{
+      margin: 18px 0 10px;
       font-weight:400;
-    }
-    h3 {
-      font-size:1.3rem;
-      margin-bottom:35px;
       font-style:italic;
-      font-weight:400;
+      font-size:clamp(22px,2.2vw,28px);
+      text-shadow:0 0 18px rgba(255,255,255,.55);
     }
 
-    /* row */
-    .rate-row {
-      display:flex;
+    /* Metin + daire + metin hizalaması – her iki satır aynı çizgiden başlar */
+    .rate-row{
+      width: clamp(720px, 78vw, 1000px);
+      margin: 6px auto 36px;
+      display:grid;
+      grid-template-columns: minmax(180px,260px) auto minmax(180px,260px);
       align-items:center;
-      justify-content:center;
-      gap:20px;
-      margin: 12px 0 42px;
-      flex-wrap:nowrap;
+      column-gap: 18px;
     }
-
-    .side {
-      font-size:1.2rem;
+    .side{
       white-space:nowrap;
-      text-shadow:0 0 12px rgba(255,255,255,.75);
-      display:flex;
-      align-items:center;
+      font-size:clamp(16px,1.6vw,20px);
+      text-shadow:0 0 12px rgba(255,255,255,.7);
     }
 
-    .rating {
+    /* Daireler */
+    .rating{
       display:flex;
+      justify-content:center;
       align-items:center;
-      gap:18px;
+      gap:22px;
     }
-
-    .dot {
-      width:36px;
-      height:36px;
+    .dot{
+      width:40px; height:40px;
       border-radius:50%;
-      border:1px solid rgba(255,255,255,.55);
-      background: rgba(255,255,255,.22);
-      box-shadow: 0 0 10px rgba(255,255,255,.45), 0 6px 12px rgba(0,0,0,.12);
-      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-      cursor:pointer;
-      display:inline-block;
-      vertical-align:middle;
+      border:1px solid rgba(255,255,255,.6);
+      background: rgba(255,255,255,.18);
+      box-shadow: 0 0 10px rgba(255,255,255,.35), 0 8px 18px rgba(0,0,0,.12);
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+      cursor:pointer; display:inline-block;
     }
-    .dot:hover,
-    .dot.active {
+    .dot:hover, .dot.active{
       background:#fff;
-      transform:scale(1.25);
-      box-shadow:0 0 18px #fff, 0 0 28px #fff;
+      transform:scale(1.22);
+      box-shadow: 0 0 20px #fff, 0 0 36px #fff;
+    }
+
+    /* Küçük ekranlarda sol/sağ metinler alt satıra düşmesin diye biraz daralt */
+    @media (max-width:900px){
+      .rate-row{ width: clamp(620px, 86vw, 900px); }
+    }
+    @media (max-width:700px){
+      .rate-row{
+        grid-template-columns: 1fr;
+        row-gap:12px;
+        width: 92vw;
+      }
+      .side{ text-align:center; }
     }
   </style>
 </head>
@@ -86,61 +106,73 @@
   </nav>
 
   <main>
-    <div class="icon">👤⭐</div>
-    <h2>i’m glad you’re here!</h2>
-    <p>would you like to rate?</p>
+    <!-- PNG ikonunu proje kökünden: img/recruiter.png -->
+    <img class="hero-icon" src="img/recruiter.png" alt="recruiter icon"/>
 
+    <div class="lead">
+      <h2>i’m glad you’re here!</h2>
+      <p>would you like to rate?</p>
+    </div>
+
+    <!-- 1. satır -->
     <h3>aesthetic</h3>
     <div class="rate-row">
       <div class="side">not my style</div>
+
       <div class="rating" data-question="aesthetic">
-        <span class="dot" data-value="1"></span>
-        <span class="dot" data-value="2"></span>
-        <span class="dot" data-value="3"></span>
-        <span class="dot" data-value="4"></span>
-        <span class="dot" data-value="5"></span>
+        <span class="dot" data-value="1" aria-label="1"></span>
+        <span class="dot" data-value="2" aria-label="2"></span>
+        <span class="dot" data-value="3" aria-label="3"></span>
+        <span class="dot" data-value="4" aria-label="4"></span>
+        <span class="dot" data-value="5" aria-label="5"></span>
       </div>
+
       <div class="side">loved it!</div>
     </div>
 
-    <h3>me ⭐</h3>
+    <!-- 2. satır -->
+    <h3>me :)</h3>
     <div class="rate-row">
       <div class="side">maybe in another opportunities</div>
+
       <div class="rating" data-question="me">
-        <span class="dot" data-value="1"></span>
-        <span class="dot" data-value="2"></span>
-        <span class="dot" data-value="3"></span>
-        <span class="dot" data-value="4"></span>
-        <span class="dot" data-value="5"></span>
+        <span class="dot" data-value="1" aria-label="1"></span>
+        <span class="dot" data-value="2" aria-label="2"></span>
+        <span class="dot" data-value="3" aria-label="3"></span>
+        <span class="dot" data-value="4" aria-label="4"></span>
+        <span class="dot" data-value="5" aria-label="5"></span>
       </div>
+
       <div class="side">want to meet you!</div>
     </div>
   </main>
 
   <script>
+    // Google Apps Script endpoint’in
     const scriptURL = "https://script.google.com/macros/s/AKfycbxnrfVE0o8uFKbi_nxoiRpiJ_wgpT2ftHQxxozlB1uOdTPIuiNcfH8eEZr8Eawr-DKg_Q/exec";
 
+    // Daire tıklamaları
     document.querySelectorAll('.rating .dot').forEach(dot => {
       dot.addEventListener('click', () => {
-        const parent = dot.parentElement;
-        const allDots = parent.querySelectorAll('.dot');
-        allDots.forEach(d => d.classList.remove('active'));
-        dot.classList.add('active');
-
-        const question = parent.dataset.question;
+        const group = dot.parentElement;           // .rating
+        const question = group.dataset.question;   // aesthetic | me
         const value = dot.dataset.value;
 
-        // Data gönder
+        // aktif sınıfı
+        group.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
+        dot.classList.add('active');
+
+        // Sheet'e gönder
         fetch(scriptURL, {
           method: 'POST',
           mode: 'no-cors',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: `question=${encodeURIComponent(question)}&value=${encodeURIComponent(value)}`
-        });
+        }).catch(() => { /* no-cors olduğu için hata yakalansa da sessiz kal */ });
 
-        // eğer "me : )" kısmında 5 seçildiyse contact.html'e yönlendir
-        if(question === "me" && value === "5"){
-          window.location.href = "contact.html";
+        // "me :)" satırında 5 seçilirse contact’a gönder
+        if (question === 'me' && value === '5') {
+          window.location.href = 'contact.html';
         }
       });
     });
