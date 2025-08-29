@@ -1,113 +1,21 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact | Zeynep Iclal Akçakoca</title>
-
-  <link rel="stylesheet" href="css/style.css" />
-
+  <link rel="stylesheet" href="style.css?v=2">
   <style>
-    html{scroll-behavior:smooth}
-    body{margin:0}
-
-    /* NAV: mevcut sitenle aynı */
-    nav{display:flex;gap:3rem;justify-content:center;padding:1rem}
-    nav a{color:#fff;text-decoration:none;opacity:.9}
-    nav a:hover{opacity:1;text-decoration:underline}
-
-    /* Sayfayı dikeyde ortala */
-    .wrap{
-      min-height:calc(100vh - 64px);
-      display:flex; align-items:center; justify-content:center;
-      padding:2rem 1rem;
-    }
-    .card{
-      width:min(100% - 2rem, 880px);
-      display:grid;
-      grid-template-columns: 180px 1fr;
-      gap:1.1rem 1.5rem;
-      align-items:center;
-    }
-
-    /* Başlık */
-    .title{
-      grid-column:1 / -1;
-      text-align:center;
-      font-family:'Instrument Serif', serif;
-      font-style:italic;
-      font-size:clamp(2.4rem,4.8vw,3.4rem);
-      margin-bottom:.5rem;
-      text-shadow:0 0 26px rgba(255,255,255,.75);
-    }
-
-    /* Etiketler (sol) */
-    .label{
-      font-family:'Instrument Serif', serif;
-      font-size:clamp(1.2rem,2vw,1.5rem);
-      text-align:left;
-      text-shadow:0 0 14px rgba(255,255,255,.6);
-    }
-
-    /* Cam inputlar */
-    .glass{
-      width:100%;
-      background:rgba(255,255,255,.18);
-      border:1px solid rgba(255,255,255,.42);
-      border-radius:999px;
-      box-shadow:0 0 28px rgba(255,255,255,.65), 0 12px 24px rgba(0,0,0,.14);
-      backdrop-filter:blur(8px);
-      padding:14px 18px;
-      color:#fff;
-      font-size:1.05rem;
-      outline:none;
-      font-family:'Instrument Serif', serif;
-    }
-    .glass::placeholder{color:rgba(255,255,255,.85)}
-    .glass:focus{box-shadow:0 0 36px rgba(255,255,255,.78), 0 14px 26px rgba(0,0,0,.16)}
-
-    /* Mesaj alanı */
-    .glass.area{
-      min-height:180px;
-      border-radius:28px;
-      resize:vertical;
-      line-height:1.4;
-    }
-
-    /* Gönder butonu */
-    .actions{
-      grid-column:1 / -1;
-      display:flex; justify-content:center; margin-top:.6rem;
-    }
-    .btn{
-      background:rgba(255,255,255,.18);
-      border:1px solid rgba(255,255,255,.42);
-      border-radius:999px;
-      padding:.9rem 2.2rem;
-      font-size:clamp(1.1rem,2vw,1.25rem);
-      color:#fff; cursor:pointer;
-      box-shadow:0 0 28px rgba(255,255,255,.65), 0 12px 24px rgba(0,0,0,.14);
-      backdrop-filter:blur(8px);
-      transition:transform .25s ease, box-shadow .25s ease;
-      font-family:'Instrument Serif', serif;
-    }
-    .btn:hover{transform:translateY(-2px); box-shadow:0 0 40px rgba(255,255,255,.8), 0 14px 28px rgba(0,0,0,.18)}
-
-    /* Onay metni */
-    .consent{
-      grid-column:1 / -1;
-      text-align:center;
-      margin-top:.4rem;
-      font-size:.95rem;
-      text-shadow:0 0 12px rgba(255,255,255,.6);
-      opacity:.95;
-    }
-
-    /* Mobil düzen */
-    @media (max-width: 780px){
-      .card{grid-template-columns:1fr; gap:.8rem}
-      .label{text-align:left}
-    }
+    main{min-height:calc(100vh - 64px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1rem}
+    h1{font-size:clamp(2.4rem,5.6vw,3.4rem);font-style:italic;text-shadow:0 0 22px rgba(255,255,255,.85);margin:0 0 1.6rem}
+    form{width:min(680px,90vw);display:flex;flex-direction:column;gap:1rem;align-items:stretch}
+    .glass{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.42);border-radius:24px;box-shadow:0 0 28px rgba(255,255,255,.65),0 12px 24px rgba(0,0,0,.14);backdrop-filter:blur(8px)}
+    input,textarea{width:100%;border:0;background:transparent;color:#fff;font-family:'Instrument Serif',serif;font-size:1.05rem;padding:1rem 1.2rem;outline:none}
+    textarea{min-height:160px;resize:vertical}
+    .actions{display:flex;justify-content:center;margin-top:.4rem}
+    .btn{padding:.85rem 2rem;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.42);color:#fff;text-decoration:none;box-shadow:0 0 26px rgba(255,255,255,.65),0 12px 24px rgba(0,0,0,.14);backdrop-filter:blur(8px)}
+    .btn:hover{transform:translateY(-2px)}
+    small{opacity:.9;text-align:center;margin-top:.6rem;display:block}
   </style>
 </head>
 <body>
@@ -118,53 +26,16 @@
     <a href="contact.html">contact</a>
   </nav>
 
-  <main class="wrap">
-    <form id="contactForm" class="card">
-      <h1 class="title">contact!</h1>
-
-      <div class="label">full name</div>
-      <input class="glass" type="text" id="fullName" name="fullName" placeholder="your name" required />
-
-      <div class="label">e-mail</div>
-      <input class="glass" type="email" id="email" name="email" placeholder="name@email.com" required />
-
-      <div class="label">message</div>
-      <textarea class="glass area" id="message" name="message" placeholder="write your message…"></textarea>
-
-      <div class="actions">
-        <button type="submit" class="btn">send me email</button>
-      </div>
-
-      <div class="consent">
-        by clicking button above, you approve that it’s okay for you to<br/>
-        share your full name and e-mail
-      </div>
+  <main>
+    <h1>contact!</h1>
+    <!-- İstersen Formspree action ekleyebilirsin -->
+    <form action="mailto:zeynep@example.com" method="post" enctype="text/plain">
+      <div class="glass"><input type="text" name="fullName" placeholder="full name" required></div>
+      <div class="glass"><input type="email" name="email" placeholder="e-mail" required></div>
+      <div class="glass"><textarea name="message" placeholder="message"></textarea></div>
+      <div class="actions"><button class="btn" type="submit">send me email</button></div>
     </form>
+    <small>by clicking button above, you approve that it’s okay for you to share your full name and e-mail</small>
   </main>
-
-  <script>
-    // TODO: Buraya kendi e-posta adresini yaz:
-    const TO_EMAIL = "youremail@example.com";
-
-    // Formu mailto ile aç
-    document.getElementById('contactForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      const name = document.getElementById('fullName').value.trim();
-      const mail = document.getElementById('email').value.trim();
-      const msg  = document.getElementById('message').value.trim();
-
-      const subject = encodeURIComponent("Website contact");
-      const bodyLines = [
-        `Full name: ${name}`,
-        `E-mail: ${mail}`,
-        "",
-        "Message:",
-        msg
-      ].join("\n");
-      const body = encodeURIComponent(bodyLines);
-
-      window.location.href = `mailto:${TO_EMAIL}?subject=${subject}&body=${body}`;
-    });
-  </script>
 </body>
 </html>
