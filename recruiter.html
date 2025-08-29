@@ -122,5 +122,57 @@ h3{ font-size:24px; font-style:italic; margin:24px 0 12px; }
     <span class="side right">want to meet you!</span>
   </div>
 </main>
+
+  /* ==== MOBİL DÜZENLEME (≤ 640px) ==== */
+@media (max-width: 640px) {
+  body {
+    padding: 0 12px; /* kenarlardan biraz boşluk */
+  }
+
+  .hero-icon {
+    width: 100px; 
+    margin-bottom: 16px;
+  }
+
+  .lead h2 {
+    font-size: 20px;
+  }
+
+  .lead p {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .rate-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 24px 0;
+  }
+
+  .rate-row .side {
+    font-size: 14px;
+    width: 90px; /* soldaki ve sağdaki yazılar için sabit genişlik */
+    text-align: center;
+  }
+
+  .rate-row .rating {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .dot {
+    width: 36px;
+    height: 36px;
+  }
+}
+
 </body>
 </html>
