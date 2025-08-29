@@ -1,78 +1,11 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Who am I? | Zeynep Iclal Akçakoca</title>
-
-  <!-- Genel stil dosyan (varsa): -->
-  <link rel="stylesheet" href="css/style.css" />
-
-  <!-- Sayfaya özel stiller -->
-  <style>
-    html{scroll-behavior:smooth}
-    .container{width:min(100% - 2rem,1200px);margin-inline:auto}
-    .grid-two{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
-
-    /* Başlıklar büyük ve parıltılı */
-    .section-title{
-      font-size:clamp(3.6rem,7vw,5rem);
-      font-weight:400;
-      margin:1.8rem 0 1.6rem;
-      text-shadow:0 0 36px rgba(255,255,255,.75),0 0 60px rgba(255,255,255,.55);
-    }
-
-    /* Cam baloncuk + beyaz glow */
-    .block{
-      background:rgba(255,255,255,.16);
-      border:1px solid rgba(255,255,255,.42);
-      border-radius:40px;
-      padding:1.2rem 1.6rem;
-      box-shadow:0 0 28px rgba(255,255,255,.55), 0 12px 28px rgba(0,0,0,.16);
-      font-size:clamp(1rem,1.9vw,1.18rem);
-    }
-    .block.large{padding:1.35rem 1.8rem}
-    .row{display:flex;align-items:center;justify-content:space-between;gap:1rem}
-    .left{font-weight:700;font-size:clamp(1.05rem,2vw,1.25rem)}
-    .right{opacity:.98;font-size:clamp(1.05rem,2vw,1.25rem)}
-
-    /* Küçük pill'ler */
-    .pills{display:flex;flex-wrap:wrap;gap:1rem}
-    .pill{
-      background:rgba(255,255,255,.14);
-      border:1px solid rgba(255,255,255,.38);
-      border-radius:999px;padding:.65rem 1.1rem;
-      box-shadow:0 0 18px rgba(255,255,255,.55), 0 8px 18px rgba(0,0,0,.14);
-      font-size:clamp(1rem,1.8vw,1.1rem);
-    }
-
-    /* Reveal + hafif float */
-    .reveal{opacity:0;transform:translateY(28px);transition:transform .7s cubic-bezier(.22,1,.36,1),opacity .7s ease}
-    .reveal.show{opacity:1;transform:translateY(0)}
-    @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
-    .float{animation:floaty 5s ease-in-out infinite}
-    .s1{animation-duration:4.7s}.s2{animation-duration:5.1s}.s3{animation-duration:5.5s}
-
-    /* Sayfa azıcık uzun olsun (hafif scroll) */
-    main.page-tall{padding:3rem 0 4rem; min-height:120vh;}
-
-    /* → who are you?  : başta görünmesin, scroll ile soldan sağa gelsin */
-    .arrow-cta{
-      display:flex; justify-content:flex-end; align-items:center;
-      padding-right:2rem; margin-top:3.5rem;
-      opacity:0; transform:translateX(-40px);
-      transition:opacity .7s ease, transform .7s ease;
-    }
-    .arrow-cta.show{opacity:1; transform:translateX(0)}
-    .arrow-cta a{
-      display:inline-flex; align-items:center; gap:.6rem;
-      font-size:clamp(2rem,3.8vw,2.8rem);
-      color:#fff; text-decoration:none;
-      text-shadow:0 0 14px rgba(255,255,255,.6);
-    }
-
-    @media(max-width:960px){.grid-two{grid-template-columns:1fr;gap:2rem}}
-  </style>
+  <!-- CSS bağlantısı -->
+  <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
   <nav>
@@ -82,104 +15,78 @@
     <a href="contact.html">contact</a>
   </nav>
 
-  <main class="container page-tall">
-    <div class="grid-two">
-      <!-- ========== EDUCATION (SOL) ========== -->
-      <section>
-        <h1 class="section-title">education ✦</h1>
+  <main class="container">
+    <!-- education -->
+    <section class="column">
+      <h1 class="section-title">education ✦</h1>
 
-        <div class="block large reveal float s1" style="margin-bottom:1.1rem">
-          <div class="row"><div class="left">özyegin university</div><div class="right">2025 – 2027</div></div>
-          <div>international relations and globalization<br>master’s degree with thesis</div>
+      <div class="block large reveal show">
+        <div class="row">
+          <div class="left">özyeğin university</div>
+          <div class="right">2025 – 2027</div>
         </div>
+        <div class="sub">international relations and globalization<br>master’s degree with thesis</div>
+      </div>
 
-        <div class="block large reveal float s2">
-          <div class="row"><div class="left">özyegin university</div><div class="right">2021 – 2025</div></div>
-          <div>international relations<br>bachelor’s of art</div>
+      <div class="block large reveal show">
+        <div class="row">
+          <div class="left">özyeğin university</div>
+          <div class="right">2021 – 2025</div>
         </div>
-      </section>
+        <div class="sub">international relations<br>bachelor’s of art</div>
+      </div>
+    </section>
 
-      <!-- ========== CAREER (SAĞ) – SENİN SIRANLA ========== -->
-      <section>
-        <h1 class="section-title">career ✦</h1>
+    <!-- career -->
+    <section class="column">
+      <h1 class="section-title">career ✦</h1>
 
-        <!-- amazon -->
-        <div class="block large reveal float s1" style="margin-bottom:1.1rem">
-          <div class="row"><div class="left">amazon</div><div class="right">may, june 2025</div></div>
-          <div>workplace, health, and safety</div>
+      <div class="block large reveal show">
+        <div class="row">
+          <div class="left">amazon</div>
+          <div class="right">may, june 2025</div>
         </div>
+        <div class="sub">workplace, health, and safety</div>
+      </div>
 
-        <!-- process + logistics -->
-        <div class="reveal float s2" style="margin-bottom:1.1rem">
-          <div class="pills">
-            <span class="pill float s1">process improvement</span>
-            <span class="pill float s2">logistics</span>
-          </div>
+      <div class="block pills reveal show">
+        <span class="pill">process improvement</span>
+        <span class="pill">logistics</span>
+        <span class="pill">sales</span>
+        <span class="pill">account management</span>
+        <span class="pill">data</span>
+      </div>
+
+      <div class="block large reveal show">
+        <div class="row">
+          <div class="left">qnb insurance</div>
+          <div class="right">july 2024, april 2025</div>
         </div>
+        <div class="sub">customer and segment management</div>
+      </div>
 
-        <!-- qnb insurance -->
-        <div class="block large reveal float s2" style="margin-bottom:1.1rem">
-          <div class="row"><div class="left">qnb insurance</div><div class="right">july 2024, april 2025</div></div>
-          <div>customer and segment management</div>
+      <div class="block pills reveal show">
+        <span class="pill">loyalty</span>
+        <span class="pill">communications</span>
+        <span class="pill">brand</span>
+      </div>
+
+      <div class="block large reveal show">
+        <div class="row">
+          <div class="left">vodafone</div>
+          <div class="right">july 2024, april 2025</div>
         </div>
+        <div class="sub">large accounts sales</div>
+      </div>
 
-        <!-- loyalty + communications + brand -->
-        <div class="reveal float s2" style="margin-bottom:1.1rem">
-          <div class="pills">
-            <span class="pill float s1">loyalty</span>
-            <span class="pill float s2">communications</span>
-            <span class="pill float s3">brand</span>
-          </div>
-        </div>
-
-        <!-- vodafone -->
-        <div class="block large reveal float s1" style="margin-bottom:1.1rem">
-          <div class="row"><div class="left">vodafone</div><div class="right">july 2024, april 2025</div></div>
-          <div>large accounts sales</div>
-        </div>
-
-        <!-- sales + account management + data -->
-        <div class="reveal float s3" style="margin-bottom:1.1rem">
-          <div class="pills">
-            <span class="pill float s1">sales</span>
-            <span class="pill float s2">account management</span>
-            <span class="pill float s3">data</span>
-          </div>
-        </div>
-
-        <!-- other experiences -->
-        <div class="block large reveal float s3">
-          and some other experiences<br>
-          on content writing, sales,<br>
-          and similar
-        </div>
-      </section>
-    </div>
-
-    <!-- → who are you?  (scroll sonrası soldan sağa gelsin) -->
-    <div class="arrow-cta">
-      <a href="whoareyou.html"><span>→</span>who are you?</a>
-    </div>
+      <div class="block large reveal show">
+        <div class="sub">and some other experiences<br>on content writing, sales,<br>and similar</div>
+      </div>
+    </section>
   </main>
 
-  <!-- Reveal & ok animasyonları -->
-  <script>
-    // Kartların sırayla görünmesi
-    window.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.reveal').forEach((el,i)=>
-        setTimeout(()=>el.classList.add('show'),120*(i+1))
-      );
-    });
-
-    // Ok: hafif scroll edince soldan sağa gelsin
-    const arrow=document.querySelector('.arrow-cta');
-    if(arrow){
-      const io=new IntersectionObserver(([entry])=>{
-        if(entry.isIntersecting) arrow.classList.add('show');
-        else arrow.classList.remove('show');
-      },{threshold:.1, rootMargin:"0px 0px -15% 0px"});
-      io.observe(arrow);
-    }
-  </script>
+  <footer>
+    <a href="whoareyou.html" class="next-link">→ who are you?</a>
+  </footer>
 </body>
 </html>
