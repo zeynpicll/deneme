@@ -43,15 +43,26 @@ body{
   100% { transform: translate(-4%,  5%) scale(1.05) rotate(-6deg);  }
 }
 
-/* nav */
 nav{
-  position:sticky; top:0; z-index:2;   /* flow’un üstünde */
-  display:flex; gap:24px; justify-content:center;
-  padding:14px 18px; font-size:14px;
+  display:flex;
+  justify-content:center;
+  gap:3rem;               /* linkler arası eşit boşluk */
+  padding:1rem;           /* üst-alt aynı yükseklik */
+  font-size:1rem;         /* yazı boyutu diğerleriyle aynı */
+  position:sticky;
+  top:0; 
+  z-index:5;
   backdrop-filter:saturate(120%) blur(4px);
 }
-nav a{color:#fff;text-decoration:none;opacity:.9}
-nav a:hover{opacity:1;text-decoration:underline}
+nav a{
+  color:#fff;
+  text-decoration:none;
+  opacity:.9;
+}
+nav a:hover{
+  opacity:1;
+  text-decoration:underline;
+}
 
 /* content */
 .wrapper{
