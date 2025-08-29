@@ -1,100 +1,23 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Who are you? | Zeynep Iclal Akçakoca</title>
-
-  <link rel="stylesheet" href="css/style.css" />
-
+  <link rel="stylesheet" href="style.css?v=2">
   <style>
-    html{scroll-behavior:smooth}
-    body{margin:0}
-
-    /* SAHNE */
-    .stage{
-      position:relative;
-      width:min(100% - 4rem, 1400px);
-      margin:0 auto;
-      min-height:100vh;               /* tam ekran yüksekliği */
-      display:flex;
-      justify-content:space-between;  /* ikonları kenarlara it */
-      align-items:center;              /* dikeyde ortala */
-      padding:0;
-    }
-
-    /* BAŞLIK ortada */
-    h1.center-title{
-      position:absolute;
-      top:50%;
-      left:50%;
-      transform:translate(-50%,-50%);
-      margin:0;
-      font-family:'Instrument Serif', serif;
-      font-style:italic;
-      font-weight:400;
-      font-size:clamp(3.6rem,7vw,5.6rem);
-      text-align:center;
-      color:#fff;
-      text-shadow:0 0 28px rgba(255,255,255,.75);
-      z-index:2;
-      pointer-events:none;
-    }
-
-    /* İKON + YAZI */
-    .option{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      cursor:pointer;
-      transition:transform .35s ease;
-      z-index:1;
-    }
-    .option:hover{ transform:scale(1.07); }
-
-    .option img{
-      width:340px;
-      max-width:92%;
-      filter:drop-shadow(0 0 18px rgba(255,255,255,.7));
-      transition:transform .35s ease, filter .35s ease;
-      margin-bottom:1.2rem;
-    }
-    .option:hover img{
-      transform:scale(1.08);
-      filter:drop-shadow(0 0 26px rgba(255,255,255,.95));
-    }
-
-    .option p{
-      font-family:'Instrument Serif', serif;
-      font-size:clamp(1.5rem,2.3vw,2rem);
-      color:#fff;
-      text-align:center;
-      line-height:1.35;
-      margin:0;
-      text-shadow:0 0 16px rgba(255,255,255,.7);
-    }
-
-    /* Mobil */
-    @media (max-width: 900px){
-      .stage{
-        flex-direction:column;
-        justify-content:center;
-        gap:3rem;
-        min-height:100vh;
-      }
-      h1.center-title{
-        top:12%;  /* mobilde biraz yukarı */
-        transform:translate(-50%,-0%);
-      }
-      .option img{ width:260px; }
-    }
-
-    /* NAV */
-    nav{
-      display:flex; gap:3rem; justify-content:center; padding:1rem; color:#fff;
-    }
-    nav a{ color:#fff; text-decoration:none; opacity:.9 }
-    nav a:hover{ opacity:1; text-decoration:underline }
+    main{min-height:calc(100vh - 64px);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:2rem 1rem;text-align:center}
+    .title{font-size:clamp(2.6rem,6vw,4rem);font-style:italic;text-shadow:0 0 22px rgba(255,255,255,.85);margin:0 0 2.4rem}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+    .card{width:min(560px,44vw);aspect-ratio:1.35/1;border-radius:32px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.1rem;text-align:center;cursor:pointer;transition:transform .25s ease, box-shadow .25s ease;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.42);box-shadow:0 0 28px rgba(255,255,255,.65),0 12px 24px rgba(0,0,0,.14);backdrop-filter:blur(8px)}
+    .card:hover{transform:translateY(-6px)}
+    .icon{width:min(380px,30vw);filter:drop-shadow(0 0 24px rgba(255,255,255,.85))}
+    .text{font-size:clamp(1.1rem,2.4vw,1.6rem);line-height:1.35;text-shadow:0 0 16px rgba(255,255,255,.7)}
+    @media(max-width:980px){.grid{grid-template-columns:1fr}.card{width:min(560px,86vw)}.icon{width:min(420px,62vw)}}
+    /* giriş anim */
+    .fade-up{opacity:0;transform:translateY(24px);animation:in .7s ease forwards; }
+    .delay-1{animation-delay:.15s}.delay-2{animation-delay:.3s}.delay-3{animation-delay:.45s}
+    @keyframes in{to{opacity:1;transform:none}}
   </style>
 </head>
 <body>
@@ -105,21 +28,21 @@
     <a href="contact.html">contact</a>
   </nav>
 
-  <main class="stage">
-    <!-- BAŞLIK tam ortada -->
-    <h1 class="center-title">who are you?</h1>
+  <main>
+    <h1 class="title fade-up">who are you?</h1>
 
-    <!-- SOL -->
-    <div class="option" onclick="location.href='recruiter.html'">
-      <img src="img/recruiter.png" alt="recruiter icon">
-      <p>a recruiter who would<br>love to hire me</p>
-    </div>
+    <div class="grid">
+      <a class="card fade-up delay-1" href="recruiter.html">
+        <img class="icon" src="recruiter.png" alt="recruiter">
+        <div class="text">a recruiter who would<br>love to hire me</div>
+      </a>
 
-    <!-- SAĞ -->
-    <div class="option" onclick="location.href='friend.html'">
-      <img src="img/arkadas.png" alt="friend icon">
-      <p>a friend of mine who<br>wants to support</p>
+      <a class="card fade-up delay-2" href="friend.html">
+        <img class="icon" src="arkadas.png" alt="friend">
+        <div class="text">a friend of mine who<br>wants to support</div>
+      </a>
     </div>
   </main>
 </body>
 </html>
+
