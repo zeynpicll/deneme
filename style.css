@@ -1,0 +1,178 @@
+/* ====== Global Styles for İclal's site ======
+   Folder layout assumed:
+   deneme/
+     ├─ index.html, whoami.html, whoareyou.html, contact.html
+     ├─ css/style.css   ← this file
+     ├─ img/background.jpg, recruiter.png, arkadas.png, yildiz.png
+     └─ fonts/instrumentserif-regular.ttf, instrumentserif-italic.ttf
+================================================ */
+
+/* Font faces (offline) */
+@font-face {
+  font-family: 'Instrument Serif';
+  src: url('../fonts/instrumentserif-regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Instrument Serif';
+  src: url('../fonts/instrumentserif-italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Reset + base */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  min-height:100vh;
+  color:#fff;
+  font-family:'Instrument Serif', serif;
+  background:url('../img/background.jpg') no-repeat center center fixed;
+  background-size:cover;
+  display:flex;
+  flex-direction:column;
+}
+img{max-width:100%; display:block}
+a{color:#fff; text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* Top navigation */
+nav{
+  display:flex; justify-content:center; gap:3rem; padding:1rem 1.2rem; font-size:1.05rem;
+  position:sticky; top:0; z-index:10;
+  backdrop-filter:saturate(160%) blur(6px);
+}
+nav a{opacity:.92; text-shadow:0 0 10px rgba(255,255,255,.35)}
+nav a:hover{opacity:1}
+
+/* Hero (centered title + CTA) */
+.hero{
+  flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+  padding:4rem 1rem;
+}
+.hero h1{ 
+  margin:0 0 1.2rem; font-weight:400; letter-spacing:.3px;
+  font-size:clamp(1.6rem, 6vw, 3rem);
+  text-shadow:0 0 18px rgba(255,255,255,.45);
+}
+
+/* Buttons */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  padding:.8rem 1.6rem; border-radius:999px; cursor:pointer;
+  color:#fff; border:1px solid rgba(255,255,255,.45);
+  background:rgba(255,255,255,.18);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+  transition:transform .15s ease, background .2s ease;
+}
+.btn:hover{transform:translateY(-2px); background:rgba(255,255,255,.28)}
+.btn:active{transform:translateY(0)}
+
+/* Cards/"glass" bubbles (for who am i / career pills) */
+.glass{
+  background:rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:28px; padding:1rem 1.2rem;
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+/* Inputs (contact form & sliders) */
+input[type="text"], input[type="email"], textarea{
+  width:100%; padding:1rem 1.2rem; border-radius:28px; color:#fff;
+  background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.35);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  outline:none;
+}
+textarea{min-height:160px; resize:vertical}
+
+/* Range slider style (who are you? page) */
+input[type="range"]{
+  -webkit-appearance:none; width:100%; height:18px; border-radius:999px;
+  background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.35);
+}
+input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance:none; width:22px; height:22px; border-radius:50%;
+  background:#fff; box-shadow:0 3px 10px rgba(0,0,0,.25);
+}
+input[type="range"]::-moz-range-thumb{
+  width:22px; height:22px; border-radius:50%; background:#fff; border:none;
+}
+
+/* Footer (if needed) */
+footer{padding:1.6rem; text-align:center; opacity:.9}
+
+/* Mobile tweaks */
+@media (max-width: 720px){
+  nav{gap:1.4rem; font-size:1rem}
+  .hero{padding:3rem 1rem}
+}
+
+/* Motion accessibility */
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important; transition:none !important}
+}
+
+/* ===== Layout for WHO AM I page (matches your design) ===== */
+.container{width:min(100% - 2rem, 1200px); margin-inline:auto}
+.grid-two{display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start}
+.section-title{font-size:clamp(2.2rem,4.5vw,3.4rem); font-weight:400; letter-spacing:.5px; margin:1.2rem 0 1.2rem; text-shadow:0 0 22px rgba(255,255,255,.45)}
+
+/* Large rounded glass blocks */
+.block{background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.35); border-radius:40px; padding:1.1rem 1.2rem; box-shadow:0 25px 60px rgba(0,0,0,.35)}
+.block.large{padding:1.2rem 1.4rem}
+
+/* Row inside bubble: left label + right meta (dates) */
+.row{display:flex; align-items:center; justify-content:space-between; gap:1rem}
+.left{font-weight:600}
+.right{opacity:.95}
+
+/* Pills row */
+.pills{display:flex; flex-wrap:wrap; gap:1rem}
+.pill{background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.32); border-radius:999px; padding:.65rem 1.1rem; box-shadow:0 15px 40px rgba(0,0,0,.28)}
+
+/* ok: sayfanın sonunda görünür; oraya gelince altta yapışır */
+.arrow-cta{
+  position: sticky;
+  bottom: 1.5rem;              /* görünür olduğunda ekranın altından 1.5rem yukarıda */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 2rem;
+  margin-top: 6rem;            /* içerikten sonra gelsin; üstte görünmesin */
+  opacity: 0;                  /* başta görünmesin */
+  transform: translateY(10px);
+  transition: opacity .35s ease, transform .35s ease;
+  z-index: 5;
+  pointer-events: none;        /* hover engel: sadece linkte aktif edeceğiz */
+}
+.arrow-cta.show{
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.arrow-cta a{
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  font-size: clamp(2rem, 3.8vw, 2.8rem);
+  text-decoration: none;
+  color: #fff;
+  text-shadow: 0 0 14px rgba(255,255,255,.6);
+  /* hafif pulse */
+  animation: pulse 1.8s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { filter: drop-shadow(0 0 0 rgba(255,255,255,0)); }
+  50%     { filter: drop-shadow(0 0 16px rgba(255,255,255,.75)); }
+}
+
+
+@media(max-width:960px){
+  .grid-two{grid-template-columns:1fr; gap:2rem}
+}
+

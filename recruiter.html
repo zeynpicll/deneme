@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>For Recruiters | Zeynep Iclal Akçakoca</title>
+
+  <!-- Ortak arka plan / fontlar -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    html{scroll-behavior:smooth}
+    body{margin:0; color:#fff; font-family:'Instrument Serif', serif;}
+
+    /* NAV */
+    nav{display:flex;gap:3rem;justify-content:center;padding:1rem}
+    nav a{color:#fff;text-decoration:none;opacity:.9}
+    nav a:hover{opacity:1;text-decoration:underline}
+
+    /* Sayfanın merkezi */
+    .wrap{
+      min-height:calc(100vh - 64px);
+      display:flex; align-items:center; justify-content:center;
+      padding:2rem 1rem;
+    }
+    .card{
+      width:min(100%, 960px);
+      display:flex; flex-direction:column; align-items:center; text-align:center;
+      gap:1rem;  /* kompakt */
+    }
+
+    /* İkon + selamlama */
+    .big-icon{
+      width:220px; max-width:90%;
+      filter:drop-shadow(0 0 22px rgba(255,255,255,.85));
+      margin-bottom:.35rem;
+    }
+    .hello{
+      font-size:clamp(1.6rem,2.3vw,2.1rem);
+      line-height:1.2;
+      text-shadow:0 0 16px rgba(255,255,255,.7);
+      margin-bottom:.3rem;
+    }
+
+    /* Başlıklar */
+    .section-title{
+      font-style:italic;
+      font-size:clamp(1.8rem,2.6vw,2.2rem);
+      margin-top:.15rem;
+      text-shadow:0 0 18px rgba(255,255,255,.75);
+    }
+
+    /* SLIDER BLOKLARI – kısa ve başlığa yakın */
+    .slider{
+      width:min(640px, 65vw);              /* kısaltıldı */
+      display:flex; flex-direction:column; align-items:center;
+      gap:.35rem;                           /* sıkı */
+      margin-top:.1rem;                     /* başlığa yakın */
+    }
+    .labels{
+      width:100%; display:flex; justify-content:space-between;
+      font-size:clamp(1.02rem,1.7vw,1.25rem);
+      text-shadow:0 0 12px rgba(255,255,255,.6);
+    }
+
+    /* Cam kapsayıcı + range */
+    .glass{
+      width:100%; height:48px;              /* ince bar */
+      border-radius:999px; padding:12px 16px;
+      background:rgba(255,255,255,.18);
+      border:1px solid rgba(255,255,255,.42);
+      box-shadow:0 0 28px rgba(255,255,255,.65), 0 12px 24px rgba(0,0,0,.14);
+      backdrop-filter:blur(8px);
+    }
+    input[type="range"]{
+      -webkit-appearance:none; appearance:none;
+      width:100%; height:10px; border-radius:999px; outline:none;
+      background:linear-gradient(to right,
+        rgba(255,255,255,.95) 0%,
+        rgba(255,255,255,.95) 0%,
+        rgba(255,255,255,.35) 0%,
+        rgba(255,255,255,.35) 100%);
+    }
+    input[type="range"]::-webkit-slider-thumb{
+      -webkit-appearance:none; appearance:none;
+      width:24px; height:24px; border-radius:50%;
+      background:#fff; border:1px solid rgba(255,255,255,.9);
+      box-shadow:0 6px 14px rgba(0,0,0,.18), 0 0 18px rgba(255,255,255,.85) inset;
+      cursor:pointer;
+    }
+    input[type="range"]::-moz-range-thumb{
+      width:24px; height:24px; border:none; border-radius:50%;
+      background:#fff; box-shadow:0 6px 14px rgba(0,0,0,.18);
+      cursor:pointer;
+    }
+
+    /* Sağ uç linki – contact’a gider */
+    .contact-link{ color:#fff; text-decoration:none }
+    .contact-link:hover{ text-decoration:underline; opacity:.95 }
+
+    /* Mobil */
+    @media (max-width:900px){
+      .big-icon{width:200px}
+      .card{gap:.85rem}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">main page</a>
+    <a href="whoami.html">who am i?</a>
+    <a href="whoareyou.html">who are you?</a>
+    <a href="contact.html">contact</a>
+  </nav>
+
+  <main class="wrap">
+    <section class="card">
+      <img class="big-icon" src="img/recruiter.png" alt="recruiter icon" />
+
+      <div class="hello">
+        i’m glad&nbsp; you’re here!<br/>
+        would you like to rate?
+      </div>
+
+      <!-- AESTHETIC -->
+      <div class="section-title">aesthetic</div>
+      <div class="slider">
+        <div class="labels">
+          <span>not my style</span>
+          <span>loved it!</span>
+        </div>
+        <div class="glass">
+          <input id="slider-aesthetic" type="range" min="0" max="100" value="20" />
+        </div>
+      </div>
+
+      <!-- ME -->
+      <div class="section-title">me :)</div>
+      <div class="slider">
+        <div class="labels">
+          <span>maybe in another opportunities</span>
+          <a class="contact-link" href="contact.html">want to meet you!</a>
+        </div>
+        <div class="glass">
+          <input id="slider-me" type="range" min="0" max="100" value="20" />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // barların sol tarafını dolu boyama
+    function paintRange(el){
+      const val = (el.value - el.min) / (el.max - el.min) * 100;
+      el.style.background =
+        `linear-gradient(to right,
+          rgba(255,255,255,.95) 0%,
+          rgba(255,255,255,.95) ${val}%,
+          rgba(255,255,255,.35) ${val}%,
+          rgba(255,255,255,.35) 100%)`;
+    }
+    [ 'slider-aesthetic', 'slider-me' ].forEach(id=>{
+      const s = document.getElementById(id);
+      paintRange(s);
+      s.addEventListener('input', ()=>paintRange(s));
+    });
+  </script>
+</body>
+</html>
