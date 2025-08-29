@@ -24,7 +24,7 @@
 
     /* Üstteki recruiter ikon PNG */
     .hero-icon{
-      width:min(200px, 35vw);
+      width:min(250px, 50vw);
       height:auto;
       display:block;
       margin:0 auto 8px;
@@ -39,7 +39,7 @@
 
     /* Bölüm başlığı */
     h3{
-      margin: 18px 0 10px;
+      margin: 25px 0 17px;
       font-weight:400;
       font-style:italic;
       font-size:clamp(22px,2.2vw,28px);
@@ -179,3 +179,43 @@
   </script>
 </body>
 </html>
+
+/* ===== MOBILE TUNING (≤ 640px) ===== */
+@media (max-width: 640px){
+
+  /* üst ikon ve metin biraz küçülsün */
+  .hero-icon{ width:140px; }
+  .lead h2{ font-size:22px; }
+  .lead p{  font-size:14px; }
+  h3{ font-size:20px; margin:16px 0 8px; }
+
+  /* satır düzeni: yan yazıları sabitle, daireler ortada */
+  .rate-row{
+    width:92vw;
+    grid-template-columns: 1fr;  /* tek sütun */
+    margin: 10px auto 28px;
+    position: relative;          /* yazıları konumlandırmak için */
+  }
+  .rate-row .rating{
+    justify-content:center;
+    gap:16px;                    /* daire aralığı */
+  }
+
+  /* yan yazıları satırın sol-sağına sabitle */
+  .rate-row .side{
+    position:absolute;
+    top:-22px;                   /* başlıkla çakışmayacak yükseklik */
+    font-size:16px;
+    text-shadow:0 0 10px rgba(255,255,255,.7);
+  }
+  .rate-row .side:first-child{ left:0; }   /* “not my style / maybe…” */
+  .rate-row .side:last-child{  right:0; }  /* “loved it! / want to meet you!” */
+
+  /* daire boyutu – baş parmak için yeterli, fazla büyük değil */
+  .dot{
+    width:34px; height:34px;
+    box-shadow: 0 0 10px rgba(255,255,255,.35), 0 6px 14px rgba(0,0,0,.10);
+  }
+  .dot:hover, .dot.active{ transform: scale(1.18); }
+}
+
