@@ -6,7 +6,7 @@
 <title>For Recruiters | Zeynep Iclal Akçakoca</title>
 
 <style>
-/* ============ fonts ============ */
+/* ===== Fonts ===== */
 @font-face{
   font-family:"Instrument Serif";
   src:url("fonts/instrumentserif-regular.ttf") format("truetype");
@@ -18,7 +18,7 @@
   font-weight:400; font-style:italic; font-display:swap;
 }
 
-/* ============ reset/base ============ */
+/* ===== Reset/Base ===== */
 *{ box-sizing:border-box; }
 html{ scroll-behavior:smooth; }
 body{
@@ -27,26 +27,37 @@ body{
   color:#fff;
   min-height:100vh;
 
-  /* senin background görselin */
-  background:url("img/background.jpg") center/cover fixed no-repeat;
+  /* Çok sağlam arka plan: 1) ./img 2) kök 3) gradient */
+  background:
+    url("./img/background.jpg") center/cover fixed no-repeat,
+    url("background.jpg") center/cover fixed no-repeat,
+    radial-gradient(circle at 20% 15%, #ffb3ba 0 22%, transparent 23%),
+    radial-gradient(circle at 80% 25%, #ffdfba 0 22%, transparent 23%),
+    radial-gradient(circle at 30% 70%, #ffffba 0 22%, transparent 23%),
+    radial-gradient(circle at 70% 80%, #baffc9 0 22%, transparent 23%),
+    radial-gradient(circle at 50% 55%, #bae1ff 0 22%, #bae1ff 23%);
+  background-blend-mode: normal, normal, screen, screen, screen, screen, screen;
   position:relative;
   overflow-x:hidden;
 }
 
-/* nav */
-nav{
+/* üstte ince çizgi — diğer sayfalarla aynı yükseklik */
+header{
   position:sticky; top:0; z-index:5;
-  display:flex; justify-content:center; gap:3.2rem;
-  padding:14px 16px 18px;
   backdrop-filter:saturate(140%) blur(4px);
   -webkit-backdrop-filter:saturate(140%) blur(4px);
+  border-bottom:1px solid rgba(255,255,255,.22);
+}
+nav{
+  display:flex; justify-content:center; gap:3.2rem;
+  padding:14px 16px 18px;   /* diğer sayfayla aynı */
 }
 nav a{
   color:#fff; text-decoration:none; opacity:.92; letter-spacing:.02em; font-size:18px;
 }
 nav a:hover{ opacity:1; text-decoration:underline; }
 
-/* main */
+/* ===== Content ===== */
 .main{
   display:flex; flex-direction:column; align-items:center;
   gap:22px; padding:40px 20px 80px;
@@ -61,7 +72,7 @@ nav a:hover{ opacity:1; text-decoration:underline; }
 .lead p { margin:2px 0 18px; font-size:18px; opacity:.95; }
 h3{ margin:26px 0 12px; font-size:30px; font-style:italic; font-weight:400; text-shadow:0 10px 22px rgba(0,0,0,.28); }
 
-/* rating satırları */
+/* ===== Rating satırları ===== */
 .rate-row{
   width:min(980px, 86vw);
   margin:8px auto 26px;
@@ -90,28 +101,48 @@ h3{ margin:26px 0 12px; font-size:30px; font-style:italic; font-weight:400; text
   transform:translateY(-1px) scale(1.02);
 }
 
-/* mobile */
+/* ===== Mobile (≤640px) ===== */
 @media (max-width:640px){
   nav{ gap:18px; padding:12px 10px 16px; }
   nav a{ font-size:16px; }
   .hero-icon{ width:96px; margin-top:4px; }
   .lead h2{ font-size:28px; } .lead p{ font-size:14px; }
   h3{ font-size:22px; margin:18px 0 8px; }
+  .rate-row{
+    width:92vw;
+    grid-template-columns: 1fr;   /* tek sütun */
+    row-gap:8px;
+    position:relative;
+  }
+  .rating{ justify-content:center; gap:16px; }
+  .side{
+    position:static; text-align:center; font-size:16px;
+  }
+  /* üst satır yan yazıları rating’e hizala */
+  .rate-row .side:first-child{ order:-1; }
+  .rate-row .side:last-child{ order:1; }
   .dot{ width:34px; height:34px; }
 }
 </style>
 </head>
 
 <body>
-  <nav>
-    <a href="index.html">main page</a>
-    <a href="whoami.html">who am i?</a>
-    <a href="whoareyou.html">who are you?</a>
-    <a href="contact.html">contact</a>
-  </nav>
+  <header>
+    <nav>
+      <a href="index.html">main page</a>
+      <a href="whoami.html">who am i?</a>
+      <a href="whoareyou.html">who are you?</a>
+      <a href="contact.html">contact</a>
+    </nav>
+  </header>
 
   <div class="main">
-    <img src="img/recruiter.png" alt="recruiter icon" class="hero-icon" />
+    <!-- İKON: önce ./img, sonra kök -->
+    <picture>
+      <source srcset="./img/recruiter.png" />
+      <img src="recruiter.png" alt="recruiter icon" class="hero-icon" />
+    </picture>
+
     <div class="lead">
       <h2>i’m glad you’re here!</h2>
       <p>would you like to rate?</p>
@@ -126,7 +157,7 @@ h3{ margin:26px 0 12px; font-size:30px; font-style:italic; font-weight:400; text
       <span class="side">loved it!</span>
     </div>
 
-    <h3>me :)</h3>
+    <h3>me : )</h3>
     <div class="rate-row">
       <span class="side">maybe in another opportunities</span>
       <div class="rating">
