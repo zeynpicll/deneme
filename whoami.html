@@ -5,124 +5,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Who am I? | Zeynep Iclal Akçakoca</title>
 
-  <!-- Global stil (arka plan + font) -->
+  <!-- Global: arkaplan + font -->
   <link rel="stylesheet" href="style.css?v=3" />
 
-  <!-- SAYFAYA ÖZEL STİLLER (grid, baloncuklar, pill’ler, animasyonlar) -->
+  <!-- Sayfaya özel stiller (grid, baloncuk, pill, anim) -->
   <style>
     :root{
       --glass-bg: rgba(255,255,255,.18);
       --glass-bd: rgba(255,255,255,.42);
       --glow: rgba(255,255,255,.75);
     }
-
-    /* Konteyner: 2 sütunlu grid */
     .container{
-      max-width: 1240px;
-      margin: 6.5rem auto 4rem;
-      padding: 0 24px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 56px;
-      color:#fff;
-      font-family: 'Instrument Serif', serif;
+      max-width:1240px;margin:6.5rem auto 4rem;padding:0 24px;
+      display:grid;grid-template-columns:1fr 1fr;gap:56px;color:#fff;
+      font-family:'Instrument Serif',serif;
     }
-
-    /* Başlıklar */
     .section-title{
-      font-size: clamp(2.6rem, 5.6vw, 4.2rem);
-      font-weight: 400;
-      margin: 0 0 22px;
-      letter-spacing:.5px;
-      text-shadow: 0 0 22px var(--glow);
+      font-size:clamp(2.6rem,5.6vw,4.2rem);font-weight:400;margin:0 0 22px;
+      text-shadow:0 0 22px var(--glow);letter-spacing:.5px;
     }
-
-    /* Baloncuk blok */
     .block{
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-bd);
-      border-radius: 28px;
-      box-shadow:
-        0 0 28px rgba(255,255,255,.65),
-        0 18px 34px rgba(0,0,0,.16);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      padding: 18px 22px;
-      margin: 14px 0;
-      color:#fff;
-      text-shadow: 0 0 14px rgba(255,255,255,.55);
+      background:var(--glass-bg);border:1px solid var(--glass-bd);border-radius:28px;
+      box-shadow:0 0 28px rgba(255,255,255,.65),0 18px 34px rgba(0,0,0,.16);
+      backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+      padding:18px 22px;margin:14px 0;color:#fff;text-shadow:0 0 14px rgba(255,255,255,.55);
     }
-    .block.large{ padding: 22px 26px; }
-
-    /* Satır: sol-sağ */
-    .row{
-      display:flex; align-items:center; justify-content:space-between;
-      gap: 18px; margin-bottom: 6px;
-      font-size: clamp(1.15rem, 2.4vw, 1.35rem);
-    }
-    .left{ font-weight: 600; }
-    .right{ opacity:.95 }
-
-    .sub{
-      font-size: clamp(1.02rem, 2vw, 1.2rem);
-      line-height: 1.35;
-      opacity:.97;
-    }
-
-    /* Pill grubu */
-    .block.pills{
-      display:flex; flex-wrap:wrap; gap:12px;
-      padding: 14px;
-    }
+    .block.large{padding:22px 26px}
+    .row{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:6px;font-size:clamp(1.15rem,2.4vw,1.35rem)}
+    .left{font-weight:600}.right{opacity:.95}
+    .sub{font-size:clamp(1.02rem,2vw,1.2rem);line-height:1.35;opacity:.97}
+    .block.pills{display:flex;flex-wrap:wrap;gap:12px;padding:14px}
     .pill{
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-bd);
-      border-radius: 999px;
-      padding: 8px 16px;
-      font-size: clamp(.95rem, 1.8vw, 1.05rem);
-      box-shadow:
-        0 0 20px rgba(255,255,255,.55),
-        0 10px 20px rgba(0,0,0,.14);
-      text-shadow: 0 0 10px rgba(255,255,255,.55);
-      white-space: nowrap;
+      background:var(--glass-bg);border:1px solid var(--glass-bd);border-radius:999px;
+      padding:8px 16px;font-size:clamp(.95rem,1.8vw,1.05rem);
+      box-shadow:0 0 20px rgba(255,255,255,.55),0 10px 20px rgba(0,0,0,.14);
+      text-shadow:0 0 10px rgba(255,255,255,.55);white-space:nowrap;
     }
-
-    /* “→ who are you?” alt-sağ ok linki */
-    footer{
-      max-width:1240px; margin: 24px auto 56px;
-      padding: 0 24px; position: relative;
-    }
-    .next-link{
-      position: fixed; right: 36px; bottom: 28px;
-      color:#fff; text-decoration:none;
-      font-size: clamp(1.4rem, 3.2vw, 2.2rem);
-      text-shadow: 0 0 20px var(--glow);
-      opacity:.95;
-    }
-    .next-link:hover{ opacity:1; text-decoration:underline }
-
-    /* Giriş animasyonları */
-    .reveal{ opacity:0; transform: translateY(18px); animation: up .6s ease forwards; }
-    .show{ animation-delay: .05s; }
-    .column .block:nth-child(2){ animation-delay:.10s }
-    .column .block:nth-child(3){ animation-delay:.18s }
-    .column .block:nth-child(4){ animation-delay:.26s }
-    .column .block:nth-child(5){ animation-delay:.34s }
-    @keyframes up{ to{ opacity:1; transform:none } }
-
-    /* Tablet / mobil */
-    @media (max-width: 980px){
-      .container{
-        grid-template-columns: 1fr;
-        gap: 32px;
-        margin-top: 5.5rem;
-      }
-      .next-link{ right: 18px; bottom: 18px; }
+    footer{max-width:1240px;margin:24px auto 56px;padding:0 24px;position:relative}
+    .next-link{position:fixed;right:36px;bottom:28px;color:#fff;text-decoration:none;
+      font-size:clamp(1.4rem,3.2vw,2.2rem);text-shadow:0 0 20px var(--glow);opacity:.95}
+    .next-link:hover{opacity:1;text-decoration:underline}
+    .reveal{opacity:0;transform:translateY(18px);animation:up .6s ease forwards}
+    .show{animation-delay:.05s}
+    .column .block:nth-child(2){animation-delay:.10s}
+    .column .block:nth-child(3){animation-delay:.18s}
+    .column .block:nth-child(4){animation-delay:.26s}
+    .column .block:nth-child(5){animation-delay:.34s}
+    @keyframes up{to{opacity:1;transform:none}}
+    @media(max-width:980px){
+      .container{grid-template-columns:1fr;gap:32px;margin-top:5.5rem}
+      .next-link{right:18px;bottom:18px}
     }
   </style>
 </head>
 <body>
-  <!-- Üst menü (global stiller style.css’te) -->
   <nav>
     <a href="index.html">main page</a>
     <a href="whoami.html">who am i?</a>
@@ -156,6 +92,7 @@
     <section class="column">
       <h1 class="section-title">career ✦</h1>
 
+      <!-- amazon -->
       <div class="block large reveal show">
         <div class="row">
           <div class="left">amazon</div>
@@ -164,14 +101,13 @@
         <div class="sub">workplace, health, and safety</div>
       </div>
 
+      <!-- amazon pills (sadece bunlar) -->
       <div class="block pills reveal">
         <span class="pill">process improvement</span>
         <span class="pill">logistics</span>
-        <span class="pill">sales</span>
-        <span class="pill">account management</span>
-        <span class="pill">data</span>
       </div>
 
+      <!-- qnb -->
       <div class="block large reveal">
         <div class="row">
           <div class="left">qnb insurance</div>
@@ -186,6 +122,7 @@
         <span class="pill">brand</span>
       </div>
 
+      <!-- vodafone -->
       <div class="block large reveal">
         <div class="row">
           <div class="left">vodafone</div>
@@ -194,6 +131,14 @@
         <div class="sub">large accounts sales</div>
       </div>
 
+      <!-- vodafone pills (sales / account management / data burada) -->
+      <div class="block pills reveal">
+        <span class="pill">sales</span>
+        <span class="pill">account management</span>
+        <span class="pill">data</span>
+      </div>
+
+      <!-- diğer deneyimler -->
       <div class="block large reveal">
         <div class="sub">and some other experiences<br>on content writing, sales,<br>and similar</div>
       </div>
@@ -205,4 +150,5 @@
   </footer>
 </body>
 </html>
+
 
