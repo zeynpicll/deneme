@@ -6,76 +6,103 @@
 <title>For Recruiters | Zeynep Iclal Akçakoca</title>
 
 <style>
+/* ===== fonts (repo kökünde fonts/ klasörü) ===== */
 @font-face{
   font-family:"Instrument Serif";
   src:url("fonts/instrumentserif-regular.ttf") format("truetype");
+  font-weight:400; font-style:normal; font-display:swap;
 }
 @font-face{
   font-family:"Instrument Serif";
   src:url("fonts/instrumentserif-italic.ttf") format("truetype");
-  font-style:italic;
+  font-weight:400; font-style:italic; font-display:swap;
 }
+
+/* ===== base ===== */
+:root{
+  --glass: rgba(255,255,255,.12);
+  --white: #fff;
+}
+*{ box-sizing:border-box }
+html,body{ height:100% }
 body{
   margin:0;
   font-family:"Instrument Serif", Georgia, serif;
-  color:#fff;
-  background: url("background.jpg") center/cover fixed no-repeat;
-  min-height:100vh;
+  color:var(--white);
+  background: url("background.jpg") center / cover fixed no-repeat;
 }
 
-header{
-  border-bottom:1px solid rgba(255,255,255,.25);
-  text-align:center;
-  padding:16px;
-}
+/* ===== nav (diğer sayfalarla uyumlu) ===== */
+header{ border-bottom:1px solid rgba(255,255,255,.25); }
 nav{
   display:flex; justify-content:center; gap:32px;
+  padding:14px 16px;
+  font-size:16px;
 }
-nav a{ color:#fff; text-decoration:none; }
-nav a:hover{ text-decoration:underline; }
+nav a{ color:#fff; text-decoration:none; opacity:.95 }
+nav a:hover{ text-decoration:underline; opacity:1 }
 
+/* ===== content ===== */
 .main{
-  display:flex; flex-direction:column; align-items:center;
+  max-width:1100px; margin:0 auto;
+  padding:36px 20px 56px;
   text-align:center;
-  padding:40px 20px;
 }
-.hero-icon{
-  width:120px; margin:20px 0;
-}
-h2{ font-size:34px; margin:10px 0 0; }
-p{ font-size:16px; margin:6px 0 20px; }
-h3{ font-size:26px; margin:30px 0 14px; font-style:italic; }
 
+.hero-icon{
+  width:130px; height:auto; margin:14px auto 8px;
+  filter: drop-shadow(0 8px 22px rgba(0,0,0,.35));
+  display:block;
+}
+
+h2{ font-size:36px; margin:8px 0 2px }
+.lead{ font-size:16px; margin:0 0 18px }
+h3{ font-size:26px; font-style:italic; margin:26px 0 12px }
+
+/* ===== rating satırı =====
+   Sol yazı – noktalar – sağ yazı: hepsi tek satırda hizalı */
 .rate-row{
-  display:flex;
+  display:grid;
+  grid-template-columns: 1fr auto 1fr;   /* sol | dots | sağ */
   align-items:center;
-  justify-content:center;
   gap:18px;
-  margin:18px 0;
+  margin:14px auto 18px;
+  max-width:920px;       /* satır genişliği */
 }
 .side{
   font-size:18px;
-  min-width:150px;
-  text-align:center;
+  line-height:1;
+  white-space:nowrap;
+  opacity:.95;
 }
+.side.left { justify-self:end;  text-align:right; }
+.side.right{ justify-self:start; text-align:left;  }
+
 .rating{
-  display:flex; gap:14px;
+  display:flex; align-items:center; gap:16px;
 }
+
+/* ===== dots ===== */
 .dot{
   width:40px; height:40px; border-radius:50%;
-  border:2px solid rgba(255,255,255,.9);
-  background:rgba(255,255,255,.1);
-  cursor:pointer;
-  transition:.2s;
+  border:2px solid rgba(255,255,255,.95);
+  background:rgba(255,255,255,.12);
+  box-shadow:0 10px 28px rgba(0,0,0,.28);
+  cursor:pointer; transition:transform .18s, background .18s;
 }
-.dot:hover{ transform:scale(1.1); background:#fff; }
+.dot:hover   { transform:scale(1.10); background:#fff; }
+.dot.active  { transform:scale(1.12); background:#fff; }
 
-@media(max-width:640px){
-  nav{ gap:18px; }
-  h2{ font-size:24px; }
-  h3{ font-size:20px; }
-  .side{ min-width:100px; font-size:14px; }
-  .dot{ width:32px; height:32px; }
+/* ===== mobile ===== */
+@media (max-width: 640px){
+  nav{ gap:18px; padding:12px 10px; font-size:15px }
+  .hero-icon{ width:110px; }
+  h2{ font-size:26px } .lead{ font-size:14px }
+  h3{ font-size:20px; margin:22px 0 10px }
+  .rate-row{ max-width: 95vw; gap:12px }
+  .side{ font-size:14px }
+  .rating{ gap:12px }
+  .dot{ width:32px; height:32px; box-shadow:0 8px 22px rgba(0,0,0,.26) }
 }
 </style>
 </head>
@@ -89,31 +116,38 @@ h3{ font-size:26px; margin:30px 0 14px; font-style:italic; }
     </nav>
   </header>
 
-  <div class="main">
-    <!-- ikon yolu: eğer img klasöründeyse ./img/recruiter.png yap -->
+  <main class="main">
+    <!-- İKON: dosya kökte → "recruiter.png". Eğer /img içindeyse "img/recruiter.png" yap -->
     <img src="recruiter.png" alt="recruiter icon" class="hero-icon" />
 
     <h2>i’m glad you’re here!</h2>
-    <p>would you like to rate?</p>
+    <p class="lead">would you like to rate?</p>
 
     <h3>aesthetic</h3>
     <div class="rate-row">
-      <span class="side">not my style</span>
+      <span class="side left">not my style</span>
       <div class="rating">
-        <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <button class="dot" aria-label="1"></button>
+        <button class="dot" aria-label="2"></button>
+        <button class="dot" aria-label="3"></button>
+        <button class="dot" aria-label="4"></button>
+        <button class="dot" aria-label="5"></button>
       </div>
-      <span class="side">loved it!</span>
+      <span class="side right">loved it!</span>
     </div>
 
     <h3>me : )</h3>
     <div class="rate-row">
-      <span class="side">maybe in another opportunities</span>
+      <span class="side left">maybe in another opportunities</span>
       <div class="rating">
-        <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <button class="dot" aria-label="1"></button>
+        <button class="dot" aria-label="2"></button>
+        <button class="dot" aria-label="3"></button>
+        <button class="dot" aria-label="4"></button>
+        <button class="dot" aria-label="5"></button>
       </div>
-      <span class="side">want to meet you!</span>
+      <span class="side right">want to meet you!</span>
     </div>
-  </div>
+  </main>
 </body>
 </html>
-
