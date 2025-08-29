@@ -132,33 +132,59 @@ h3{
   margin-top:26px; font-size:13px; opacity:.85; text-shadow:0 8px 20px rgba(0,0,0,.25);
 }
 
-/* ===== Mobile (≤ 640px) ===== */
+/* ==== MOBILE TUNING (≤ 640px) ==== */
 @media (max-width:640px){
-  :root{ --dot-size: 38px; --gap-dots: 14px; --rail-w: 92vw; }
-  .hero-icon{ width:108px; margin-bottom:12px }
-  .lead h2{ font-size:28px }
-  .lead p{ font-size:14px; margin-bottom:16px }
-  h3{ font-size:18px; margin:8px 0 6px }
-
-  .rate-row{
-    grid-template-columns: 1fr minmax(200px, 1.1fr) 1fr;
-    gap:14px; margin:18px auto;
+  :root{
+    --dot-size: 36px;          /* mobil dot boyutu */
+    --gap-dots: 14px;          /* dot aralığı   */
+    --rail-w: 86vw;            /* ortadaki ray genişliği */
   }
-  .rate-row .side{ font-size:14px; opacity:.93 }
-  .rate-row .side.left{ text-align:right; }
-  .rate-row .side.right{ text-align:left; }
 
-  .rating{ padding:8px 10px; border-radius:22px }
+  .hero-icon{ width: 104px; margin-bottom: 12px; }
+  .lead h2{ font-size: 28px; }
+  .lead p { font-size: 14px; margin-bottom: 14px; }
+  h3{ font-size: 18px; margin: 10px 0 6px; }
+
+  /* satırı 3 kolona böl: sol yazı — dots — sağ yazı */
+  .rate-row{
+    width: 94vw;
+    grid-template-columns: minmax(96px,1fr) minmax(220px, var(--rail-w)) minmax(96px,1fr);
+    align-items: center;
+    gap: 12px;
+    margin: 18px auto 14px;
+  }
+
+  /* sol/sağ yazıları dots’a hizala ve çok satıra dengeli kır */
+  .rate-row .side{
+    font-size: 14px;
+    line-height: 1.15;
+    text-wrap: balance;        /* destek varsa dengeli kırar */
+    word-break: normal;
+    white-space: normal;
+    opacity: .95;
+  }
+  .rate-row .side.left { text-align: right;  padding-right: 4px; }
+  .rate-row .side.right{ text-align: left;   padding-left: 4px; }
+
+  /* rayı biraz daha belirgin yap, ama kompakt tut */
+  .rating{
+    padding: 10px 12px;
+    border-radius: 22px;
+    backdrop-filter: blur(12px);
+    background: rgba(255,255,255,.18);
+    border: 1px solid rgba(255,255,255,.30);
+  }
 }
 
-/* tiny phones */
-@media (max-width:360px){
-  :root{ --dot-size: 34px; --gap-dots: 12px; }
-  .lead h2{ font-size:26px }
+/* çok dar telefonlar (≤ 390px) için küçük bir sıkıştırma */
+@media (max-width:390px){
+  :root{ --dot-size: 34px; --gap-dots: 12px; --rail-w: 90vw; }
+  .rate-row{
+    grid-template-columns: minmax(88px,1fr) minmax(205px,var(--rail-w)) minmax(88px,1fr);
+    gap: 10px;
+  }
+  .rate-row .side{ font-size: 13.5px; }
 }
-</style>
-</head>
-
 <body>
   <header>
     <nav>
