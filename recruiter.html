@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>For Recruiters | Zeynep Iclal Akçakoca</title>
 
-  <!-- Global arkaplan + font -->
-  <link rel="stylesheet" href="style.css?v=5" />
+  <link rel="stylesheet" href="style.css?v=6" />
 
-  <!-- Sayfaya özel stil -->
   <style>
     :root{
       --glass-bg: rgba(255,255,255,.16);
@@ -17,118 +15,65 @@
     }
     body{ color:#fff; font-family:'Instrument Serif',serif; }
 
-    /* sayfa iskeleti */
-    .wrap{
-      max-width: 980px;
-      margin: 7rem auto 6rem;
-      padding: 0 20px;
-      text-align:center;
-    }
+    .wrap{ max-width:980px; margin:7rem auto 6rem; padding:0 20px; text-align:center; }
 
     .hero-icon{
-      width: 140px;
-      height: auto;
-      margin: 0 auto 22px;
-      filter: drop-shadow(0 0 18px rgba(255,255,255,.75));
-      transition: transform .35s ease, filter .35s ease;
+      width:140px; height:auto; margin:0 auto 18px;
+      filter:drop-shadow(0 0 18px rgba(255,255,255,.75));
+      transition:transform .35s ease, filter .35s ease;
     }
-    .hero-icon:hover{
-      transform: scale(1.06);
-      filter: drop-shadow(0 0 28px rgba(255,255,255,1));
-    }
+    .hero-icon:hover{ transform:scale(1.06); filter:drop-shadow(0 0 28px rgba(255,255,255,1)); }
 
-    .lead{
-      font-size:clamp(1.6rem,3.6vw,2.2rem);
-      line-height:1.15;
-      margin: .4rem 0 1.4rem;
-      text-shadow:0 0 22px var(--glow);
-    }
-    .sub{
-      font-size:clamp(1.05rem,2.4vw,1.35rem);
-      opacity:.98;
-      margin-bottom:2.4rem;
-      text-shadow:0 0 14px rgba(255,255,255,.7);
-    }
+    .lead{ font-size:clamp(1.6rem,3.6vw,2.2rem); line-height:1.15; margin:.4rem 0 .9rem; text-shadow:0 0 22px var(--glow); }
+    .sub{  font-size:clamp(1.05rem,2.4vw,1.35rem); opacity:.98; margin-bottom:2.0rem; text-shadow:0 0 14px rgba(255,255,255,.7); }
 
-    /* bölüm başlıkları */
-    .section-title{
-      font-size:clamp(1.5rem,3vw,1.9rem);
-      margin: 0 0 .8rem;
-      font-style: italic;
-      text-shadow:0 0 16px var(--glow);
-    }
+    .section-title{ font-size:clamp(1.5rem,3vw,1.9rem); margin:0 0 .6rem; font-style:italic; text-shadow:0 0 16px var(--glow); }
 
-    /* slider kutusu */
     .rate-block{
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-bd);
-      border-radius: 26px;
-      box-shadow: 0 0 26px rgba(255,255,255,.65), 0 18px 34px rgba(0,0,0,.16);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      padding: 18px 20px 24px;
-      margin: 0 auto 28px;
-      max-width: 880px;
+      background:var(--glass-bg); border:1px solid var(--glass-bd); border-radius:22px;
+      box-shadow:0 0 26px rgba(255,255,255,.6), 0 16px 30px rgba(0,0,0,.16);
+      backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+      padding:14px 16px 18px; margin:0 auto 22px; max-width:820px;
     }
-
     .labels{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin: 6px 2px 10px;
-      font-size:clamp(1rem,2vw,1.15rem);
+      display:flex; justify-content:space-between; align-items:center;
+      margin:4px 2px 10px; font-size:clamp(.98rem,2vw,1.1rem);
       text-shadow:0 0 12px rgba(255,255,255,.7);
     }
 
-    /* range - glass */
+    /* slimmer range */
     input[type="range"]{
-      -webkit-appearance:none;
-      appearance:none;
-      width:100%;
-      height: 16px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.22);
-      border: 1px solid rgba(255,255,255,.44);
-      box-shadow: inset 0 2px 8px rgba(0,0,0,.18), 0 0 18px rgba(255,255,255,.55);
-      outline:none;
-      transition: filter .2s ease;
+      -webkit-appearance:none; appearance:none; width:100%;
+      height:10px; border-radius:999px; outline:none;
+      background:rgba(255,255,255,.22); border:1px solid rgba(255,255,255,.44);
+      box-shadow:inset 0 2px 6px rgba(0,0,0,.18), 0 0 14px rgba(255,255,255,.5);
+      transition:filter .2s ease;
     }
-    input[type="range"]:hover{ filter: brightness(1.05); }
+    input[type="range"]:hover{ filter:brightness(1.06); }
 
-    /* thumb */
     input[type="range"]::-webkit-slider-thumb{
-      -webkit-appearance:none;
-      appearance:none;
-      width: 22px; height: 22px;
-      border-radius:50%;
-      background: #fff;
-      border: 0;
-      box-shadow: 0 0 18px rgba(255,255,255,.95), 0 4px 10px rgba(0,0,0,.25);
-      cursor: pointer;
+      -webkit-appearance:none; appearance:none;
+      width:16px; height:16px; border-radius:50%; background:#fff; border:0;
+      box-shadow:0 0 14px rgba(255,255,255,.95), 0 3px 8px rgba(0,0,0,.22);
+      cursor:pointer;
     }
     input[type="range"]::-moz-range-thumb{
-      width: 22px; height: 22px; border-radius:50%;
-      background: #fff; border:0;
-      box-shadow: 0 0 18px rgba(255,255,255,.95), 0 4px 10px rgba(0,0,0,.25);
-      cursor: pointer;
+      width:16px; height:16px; border-radius:50%; background:#fff; border:0;
+      box-shadow:0 0 14px rgba(255,255,255,.95), 0 3px 8px rgba(0,0,0,.22);
+      cursor:pointer;
     }
 
-    .hint{
-      font-size:.95rem; opacity:.9; margin-top:.4rem
-    }
-
-    /* nav üstü (global) style.css zaten linkli */
     nav a{ text-decoration:none; color:#fff; opacity:.92 }
     nav a:hover{ opacity:1; text-decoration:underline }
 
-    @media (max-width:700px){
-      .wrap{ margin-top: 6rem; }
+    @media(max-width:700px){
+      .wrap{ margin-top:6rem; }
       .hero-icon{ width:120px }
+      .rate-block{ max-width:100%; }
     }
   </style>
 </head>
 <body>
-  <!-- Üst menü -->
   <nav>
     <a href="index.html">main page</a>
     <a href="whoami.html">who am i?</a>
@@ -146,8 +91,7 @@
     <h2 class="section-title">aesthetic</h2>
     <div class="rate-block">
       <div class="labels">
-        <span>not my style</span>
-        <span>loved it!</span>
+        <span>not my style</span><span>loved it!</span>
       </div>
       <input id="s1" type="range" min="0" max="100" value="50" />
     </div>
@@ -156,68 +100,39 @@
     <h2 class="section-title">me : )</h2>
     <div class="rate-block">
       <div class="labels">
-        <span>maybe in another opportunities</span>
-        <span>want to meet you!</span>
+        <span>maybe in another opportunities</span><span>want to meet you!</span>
       </div>
       <input id="s2" type="range" min="0" max="100" value="10" />
-      <div class="hint">tip: sağa doğru yaklaştıkça contact sayfası otomatik açılır ✨</div>
     </div>
   </main>
 
-  <!-- Analytics + oto yönlendirme -->
   <script>
-    // Google Apps Script Web App URL’in:
-    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxnrfVE0o8uFKbi_nxoiRpiJ_wgpT2ftHQxxozlB1uOdTPIuiNcfH8eEZr8Eawr-DKg_Q/exec';
+    const ENDPOINT='https://script.google.com/macros/s/AKfycbxnrfVE0o8uFKbi_nxoiRpiJ_wgpT2ftHQxxozlB1uOdTPIuiNcfH8eEZr8Eawr-DKg_Q/exec';
 
-    // Ziyaretçiye basit anonim oturum id
     function getSessionId(){
-      let id = localStorage.getItem('iclal_sid');
+      let id=localStorage.getItem('iclal_sid');
       if(!id){
-        id = (crypto && crypto.randomUUID) ? crypto.randomUUID()
-            : 'sid_' + Math.random().toString(36).slice(2);
-        localStorage.setItem('iclal_sid', id);
+        id=(crypto&&crypto.randomUUID)?crypto.randomUUID():'sid_'+Math.random().toString(36).slice(2);
+        localStorage.setItem('iclal_sid',id);
       }
       return id;
     }
-
-    // Fire & forget log (Sheet’e düşer)
-    function sendLog(action, value){
-      const payload = {
-        page: location.pathname.split('/').pop() || 'index',
-        action, value,
-        sessionId: getSessionId(),
-        userAgent: navigator.userAgent,
-        referrer: document.referrer,
-        url: location.href
-      };
-      fetch(ENDPOINT, {
-        method:'POST',
-        mode:'no-cors',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify(payload)
-      }).catch(() => {});
+    function sendLog(action,value){
+      const payload={page:location.pathname.split('/').pop()||'index',action,value,
+        sessionId:getSessionId(),userAgent:navigator.userAgent,referrer:document.referrer,url:location.href};
+      fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).catch(()=>{});
     }
 
-    // sayfa görüntülendi
-    sendLog('view', null);
+    sendLog('view',null);
 
-    // sliderlar
-    const s1 = document.getElementById('s1'); // aesthetic
-    const s2 = document.getElementById('s2'); // me :)
+    const s1=document.getElementById('s1');
+    const s2=document.getElementById('s2');
+    [s1,s2].forEach(el=>{ if(!el) return; el.addEventListener('change',()=>sendLog(el.id,el.value)); });
 
-    [s1, s2].forEach(el=>{
-      if(!el) return;
-      el.addEventListener('change', ()=> sendLog(el.id, el.value));
-    });
-
-    // me :) %90 ve üstüne gelince otomatik contact
     if(s2){
-      s2.addEventListener('input', ()=>{
-        const v = Number(s2.value||0);
-        if(v >= 90){
-          sendLog('wants_to_meet', v);
-          setTimeout(()=>{ location.href = 'contact.html'; }, 400);
-        }
+      s2.addEventListener('input',()=>{
+        const v=+s2.value||0;
+        if(v>=90){ sendLog('wants_to_meet',v); setTimeout(()=>location.href='contact.html',350); }
       });
     }
   </script>
