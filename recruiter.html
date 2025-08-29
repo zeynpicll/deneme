@@ -1,28 +1,134 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>For Recruiters | Zeynep Iclal Akçakoca</title>
-  <link rel="stylesheet" href="style.css?v=2">
+
+  <!-- Global arkaplan + font -->
+  <link rel="stylesheet" href="style.css?v=5" />
+
+  <!-- Sayfaya özel stil -->
   <style>
-    nav{display:flex;gap:3rem;justify-content:center;padding:1rem}
-    nav a{color:#fff;text-decoration:none;opacity:.9} nav a:hover{opacity:1;text-decoration:underline}
-    .wrap{min-height:calc(100vh - 64px);display:flex;align-items:center;justify-content:center;padding:2rem 1rem}
-    .card{width:min(960px,92vw);display:flex;flex-direction:column;align-items:center;text-align:center;gap:1rem}
-    .big-icon{width:220px;filter:drop-shadow(0 0 22px rgba(255,255,255,.85))}
-    .hello{font-size:clamp(1.6rem,2.4vw,2rem);line-height:1.25;text-shadow:0 0 16px rgba(255,255,255,.7)}
-    .section-title{font-style:italic;font-size:clamp(1.8rem,2.6vw,2.2rem);text-shadow:0 0 18px rgba(255,255,255,.75)}
-    .slider{width:min(640px,65vw);display:flex;flex-direction:column;align-items:center;gap:.35rem;margin-top:.1rem}
-    .labels{width:100%;display:flex;justify-content:space-between;font-size:clamp(1.02rem,1.7vw,1.25rem);text-shadow:0 0 12px rgba(255,255,255,.6)}
-    .glass{width:100%;height:48px;border-radius:999px;padding:12px 16px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.42);box-shadow:0 0 28px rgba(255,255,255,.65),0 12px 24px rgba(0,0,0,.14);backdrop-filter:blur(8px)}
-    input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:10px;border-radius:999px;background:linear-gradient(to right,rgba(255,255,255,.95) 0%,rgba(255,255,255,.95) 0%,rgba(255,255,255,.35) 0%,rgba(255,255,255,.35) 100%)}
-    input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:#fff;border:1px solid rgba(255,255,255,.9);box-shadow:0 6px 14px rgba(0,0,0,.18),0 0 18px rgba(255,255,255,.85) inset;cursor:pointer}
-    input[type=range]::-moz-range-thumb{width:24px;height:24px;border:none;border-radius:50%;background:#fff;box-shadow:0 6px 14px rgba(0,0,0,.18);cursor:pointer}
-    .contact-link{color:#fff;text-decoration:none}.contact-link:hover{text-decoration:underline;opacity:.95}
+    :root{
+      --glass-bg: rgba(255,255,255,.16);
+      --glass-bd: rgba(255,255,255,.38);
+      --glow: rgba(255,255,255,.85);
+    }
+    body{ color:#fff; font-family:'Instrument Serif',serif; }
+
+    /* sayfa iskeleti */
+    .wrap{
+      max-width: 980px;
+      margin: 7rem auto 6rem;
+      padding: 0 20px;
+      text-align:center;
+    }
+
+    .hero-icon{
+      width: 140px;
+      height: auto;
+      margin: 0 auto 22px;
+      filter: drop-shadow(0 0 18px rgba(255,255,255,.75));
+      transition: transform .35s ease, filter .35s ease;
+    }
+    .hero-icon:hover{
+      transform: scale(1.06);
+      filter: drop-shadow(0 0 28px rgba(255,255,255,1));
+    }
+
+    .lead{
+      font-size:clamp(1.6rem,3.6vw,2.2rem);
+      line-height:1.15;
+      margin: .4rem 0 1.4rem;
+      text-shadow:0 0 22px var(--glow);
+    }
+    .sub{
+      font-size:clamp(1.05rem,2.4vw,1.35rem);
+      opacity:.98;
+      margin-bottom:2.4rem;
+      text-shadow:0 0 14px rgba(255,255,255,.7);
+    }
+
+    /* bölüm başlıkları */
+    .section-title{
+      font-size:clamp(1.5rem,3vw,1.9rem);
+      margin: 0 0 .8rem;
+      font-style: italic;
+      text-shadow:0 0 16px var(--glow);
+    }
+
+    /* slider kutusu */
+    .rate-block{
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-bd);
+      border-radius: 26px;
+      box-shadow: 0 0 26px rgba(255,255,255,.65), 0 18px 34px rgba(0,0,0,.16);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 18px 20px 24px;
+      margin: 0 auto 28px;
+      max-width: 880px;
+    }
+
+    .labels{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin: 6px 2px 10px;
+      font-size:clamp(1rem,2vw,1.15rem);
+      text-shadow:0 0 12px rgba(255,255,255,.7);
+    }
+
+    /* range - glass */
+    input[type="range"]{
+      -webkit-appearance:none;
+      appearance:none;
+      width:100%;
+      height: 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.22);
+      border: 1px solid rgba(255,255,255,.44);
+      box-shadow: inset 0 2px 8px rgba(0,0,0,.18), 0 0 18px rgba(255,255,255,.55);
+      outline:none;
+      transition: filter .2s ease;
+    }
+    input[type="range"]:hover{ filter: brightness(1.05); }
+
+    /* thumb */
+    input[type="range"]::-webkit-slider-thumb{
+      -webkit-appearance:none;
+      appearance:none;
+      width: 22px; height: 22px;
+      border-radius:50%;
+      background: #fff;
+      border: 0;
+      box-shadow: 0 0 18px rgba(255,255,255,.95), 0 4px 10px rgba(0,0,0,.25);
+      cursor: pointer;
+    }
+    input[type="range"]::-moz-range-thumb{
+      width: 22px; height: 22px; border-radius:50%;
+      background: #fff; border:0;
+      box-shadow: 0 0 18px rgba(255,255,255,.95), 0 4px 10px rgba(0,0,0,.25);
+      cursor: pointer;
+    }
+
+    .hint{
+      font-size:.95rem; opacity:.9; margin-top:.4rem
+    }
+
+    /* nav üstü (global) style.css zaten linkli */
+    nav a{ text-decoration:none; color:#fff; opacity:.92 }
+    nav a:hover{ opacity:1; text-decoration:underline }
+
+    @media (max-width:700px){
+      .wrap{ margin-top: 6rem; }
+      .hero-icon{ width:120px }
+    }
   </style>
 </head>
 <body>
+  <!-- Üst menü -->
   <nav>
     <a href="index.html">main page</a>
     <a href="whoami.html">who am i?</a>
@@ -31,28 +137,89 @@
   </nav>
 
   <main class="wrap">
-    <section class="card">
-      <img class="big-icon" src="recruiter.png" alt="recruiter icon">
-      <div class="hello">i’m glad you’re here!<br>would you like to rate?</div>
+    <img class="hero-icon" src="recruiter.png" alt="recruiter"/>
 
-      <div class="section-title">aesthetic</div>
-      <div class="slider">
-        <div class="labels"><span>not my style</span><span>loved it!</span></div>
-        <div class="glass"><input id="s1" type="range" min="0" max="100" value="50"></div>
-      </div>
+    <div class="lead">i’m glad you’re here!</div>
+    <div class="sub">would you like to rate?</div>
 
-      <div class="section-title">me :)</div>
-      <div class="slider">
-        <div class="labels"><span>maybe in another opportunities</span><a class="contact-link" href="contact.html">want to meet you!</a></div>
-        <div class="glass"><input id="s2" type="range" min="0" max="100" value="40"></div>
+    <!-- AESTHETIC -->
+    <h2 class="section-title">aesthetic</h2>
+    <div class="rate-block">
+      <div class="labels">
+        <span>not my style</span>
+        <span>loved it!</span>
       </div>
-    </section>
+      <input id="s1" type="range" min="0" max="100" value="50" />
+    </div>
+
+    <!-- ME -->
+    <h2 class="section-title">me : )</h2>
+    <div class="rate-block">
+      <div class="labels">
+        <span>maybe in another opportunities</span>
+        <span>want to meet you!</span>
+      </div>
+      <input id="s2" type="range" min="0" max="100" value="10" />
+      <div class="hint">tip: sağa doğru yaklaştıkça contact sayfası otomatik açılır ✨</div>
+    </div>
   </main>
 
+  <!-- Analytics + oto yönlendirme -->
   <script>
-    function paint(el){const v=(el.value-el.min)/(el.max-el.min)*100;el.style.background=`linear-gradient(to right,rgba(255,255,255,.95) 0%,rgba(255,255,255,.95) ${v}%,rgba(255,255,255,.35) ${v}%,rgba(255,255,255,.35) 100%)`}
-    ['s1','s2'].forEach(id=>{const s=document.getElementById(id);paint(s);s.addEventListener('input',()=>paint(s))});
+    // Google Apps Script Web App URL’in:
+    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxnrfVE0o8uFKbi_nxoiRpiJ_wgpT2ftHQxxozlB1uOdTPIuiNcfH8eEZr8Eawr-DKg_Q/exec';
+
+    // Ziyaretçiye basit anonim oturum id
+    function getSessionId(){
+      let id = localStorage.getItem('iclal_sid');
+      if(!id){
+        id = (crypto && crypto.randomUUID) ? crypto.randomUUID()
+            : 'sid_' + Math.random().toString(36).slice(2);
+        localStorage.setItem('iclal_sid', id);
+      }
+      return id;
+    }
+
+    // Fire & forget log (Sheet’e düşer)
+    function sendLog(action, value){
+      const payload = {
+        page: location.pathname.split('/').pop() || 'index',
+        action, value,
+        sessionId: getSessionId(),
+        userAgent: navigator.userAgent,
+        referrer: document.referrer,
+        url: location.href
+      };
+      fetch(ENDPOINT, {
+        method:'POST',
+        mode:'no-cors',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(payload)
+      }).catch(() => {});
+    }
+
+    // sayfa görüntülendi
+    sendLog('view', null);
+
+    // sliderlar
+    const s1 = document.getElementById('s1'); // aesthetic
+    const s2 = document.getElementById('s2'); // me :)
+
+    [s1, s2].forEach(el=>{
+      if(!el) return;
+      el.addEventListener('change', ()=> sendLog(el.id, el.value));
+    });
+
+    // me :) %90 ve üstüne gelince otomatik contact
+    if(s2){
+      s2.addEventListener('input', ()=>{
+        const v = Number(s2.value||0);
+        if(v >= 90){
+          sendLog('wants_to_meet', v);
+          setTimeout(()=>{ location.href = 'contact.html'; }, 400);
+        }
+      });
+    }
   </script>
 </body>
 </html>
-
