@@ -1,13 +1,66 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Main Page | Zeynep Iclal Akçakoca</title>
-  <link rel="stylesheet" href="css/style.css">
+
+  <!-- KÖKTEKİ stylesheet (GitHub Pages için doğru yol) -->
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* Üst menü */
+    nav{display:flex;gap:3rem;justify-content:center;padding:1rem}
+    nav a{color:#fff;text-decoration:none;opacity:.9}
+    nav a:hover{opacity:1;text-decoration:underline}
+
+    /* Orta alan */
+    .hero{
+      min-height:calc(100vh - 64px);
+      display:flex;flex-direction:column;
+      align-items:center;justify-content:center;
+      text-align:center;color:#fff
+    }
+    .hero h1{
+      font-family:'Instrument Serif',serif;
+      font-size:clamp(2rem,5vw,3rem);
+      font-weight:400;margin:0 0 1.2rem;
+      text-shadow:0 0 22px rgba(255,255,255,.8)
+    }
+
+    /* Explore butonu – cam & parıltı + tıklayınca halka efekti */
+    .btn{
+      position:relative;display:inline-block;
+      padding:.85rem 2.1rem;border-radius:999px;
+      color:#fff;text-decoration:none;
+      background:rgba(255,255,255,.18);
+      border:1px solid rgba(255,255,255,.42);
+      box-shadow:0 0 26px rgba(255,255,255,.65), 0 12px 24px rgba(0,0,0,.14);
+      backdrop-filter:blur(8px);
+      transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+      overflow:hidden;
+      font-family:'Instrument Serif',serif;
+      font-size:clamp(1rem,2.4vw,1.15rem);
+    }
+    .btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.24)}
+    .btn::after{
+      content:"";position:absolute;inset:0;border-radius:999px;pointer-events:none;
+      box-shadow:0 0 22px rgba(255,255,255,.9) inset;
+      opacity:.7
+    }
+    /* tıklama dalgası */
+    .btn:active::before{
+      content:"";position:absolute;left:50%;top:50%;
+      width:10px;height:10px;border-radius:999px;
+      background:rgba(255,255,255,.55);
+      transform:translate(-50%,-50%);animation:ripple .6s ease-out forwards;
+    }
+    @keyframes ripple{
+      to{width:420px;height:420px;opacity:0}
+    }
+  </style>
 </head>
 <body>
-  <!-- Navigation -->
   <nav>
     <a href="index.html">main page</a>
     <a href="whoami.html">who am i?</a>
@@ -15,15 +68,9 @@
     <a href="contact.html">contact</a>
   </nav>
 
-  <!-- Hero -->
-  <div class="hero">
+  <main class="hero">
     <h1>zeynep iclal akçakoca</h1>
-    <a href="whoami.html" class="btn">explore</a>
-  </div>
-
-  <!-- Optional footer -->
-  <footer>
-    © 2025 Zeynep Iclal Akçakoca
-  </footer>
+    <a class="btn" href="whoami.html">explore</a>
+  </main>
 </body>
 </html>
